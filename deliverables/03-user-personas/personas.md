@@ -3,7 +3,7 @@ deliverable: 03-user-personas
 project_number: 2
 status: confirmed
 owner: pm
-updated: 2026-09-28
+updated: 2026-10-06
 confirmed_with_client: 2026-09-30
 depends_on: [01-project-alignment]
 feeds: [05-information-architecture, 10-development-ready-prototype]
@@ -44,7 +44,7 @@ Jobs. Request the repeat prescription. See its status. Get the reminder by email
 ## Sanja, reception at Lumen Trešnjevka
 
 Twenty-nine, three years on the desk, the one everyone asks. Two screens, VetDesk on
-one, the phone queue on the other. Will not install anything (D-005). Wants a single
+one, the phone queue on the other. Will not install anything (D-005). Wants a multiple
 list of requests she can clear between calls, approve in two clicks, and reject with
 a reason the owner actually reads. Worried the app will double her work if it does
 not write to VetDesk.
