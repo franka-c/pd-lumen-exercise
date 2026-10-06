@@ -1,0 +1,13 @@
+# Generated deliverables. The markdown and CSV are the source.
+*.docx
+*.xlsx
+*.pdf
+!docs/**/*.pdf
+
+# Never commit these
+*.mp4
+*.mov
+*.m4a
+
+.DS_Store
+__pycache__/

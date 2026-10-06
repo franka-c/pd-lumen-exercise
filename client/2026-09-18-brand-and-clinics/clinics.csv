@@ -1,0 +1,15 @@
+clinic,city,country,weekday_hours,saturday_hours,appointment_types,vets
+Lumen Trešnjevka,Zagreb,HR,07:00-20:00,08:00-14:00,"check-up,vaccination,surgery,dental,emergency",6
+Lumen Maksimir,Zagreb,HR,07:00-20:00,08:00-14:00,"check-up,vaccination,surgery,dental",5
+Lumen Dubrava,Zagreb,HR,08:00-19:00,08:00-13:00,"check-up,vaccination,dental",3
+Lumen Split,Split,HR,07:30-19:30,08:00-13:00,"check-up,vaccination,surgery,emergency",5
+Lumen Rijeka,Rijeka,HR,08:00-19:00,08:00-13:00,"check-up,vaccination,surgery",4
+Lumen Osijek,Osijek,HR,08:00-18:00,08:00-12:00,"check-up,vaccination",2
+Lumen Zadar,Zadar,HR,08:00-19:00,08:00-13:00,"check-up,vaccination,dental",3
+Lumen Varaždin,Varaždin,HR,08:00-18:00,closed,"check-up,vaccination",2
+Lumen Pula,Pula,HR,08:00-18:00,08:00-12:00,"check-up,vaccination,surgery",3
+Lumen Ljubljana Center,Ljubljana,SI,07:00-20:00,08:00-14:00,"check-up,vaccination,surgery,dental,emergency",6
+Lumen Ljubljana Šiška,Ljubljana,SI,08:00-19:00,08:00-13:00,"check-up,vaccination,dental",3
+Lumen Maribor,Maribor,SI,08:00-19:00,08:00-13:00,"check-up,vaccination,surgery",4
+Lumen Celje,Celje,SI,08:00-18:00,closed,"check-up,vaccination",2
+Lumen Koper,Koper,SI,08:00-18:00,08:00-12:00,"check-up,vaccination",2

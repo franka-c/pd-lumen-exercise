@@ -1,0 +1,55 @@
+name: Validate discovery repo
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+
+      - name: Front-matter contract
+        run: python scripts/validate.py --base "origin/${{ github.base_ref }}"
+
+      - name: discovery.yml is current
+        run: |
+          python scripts/build_index.py
+          if ! git diff --exit-code --quiet -- discovery.yml; then
+            echo "::error::discovery.yml is out of date. Sync with main, run python scripts/build_index.py, commit the result and push again."
+            git --no-pager diff -- discovery.yml | head -60
+            exit 1
+          fi
+
+      - name: Staleness
+        run: |
+          python - <<'PY'
+          import yaml, sys
+          index = yaml.safe_load(open("discovery.yml"))
+          stale = [d for d in index["deliverables"] if d["stale_upstream"]]
+          if not stale:
+              print("Nothing is stale.")
+              sys.exit(0)
+          print("Flagged stale, re-check or dismiss with a reason in the pull request:\n")
+          for d in stale:
+              ups = ", ".join(f"{u['id']} (changed {u['changed']})" for u in d["stale_upstream"])
+              print(f"  {d['id']} [{d['status']}] <- {ups}")
+          PY
+
+      - name: Blast radius comment
+        run: |
+          python scripts/blast_radius.py "origin/${{ github.base_ref }}" > /tmp/blast.md
+          cat /tmp/blast.md
+          gh pr comment "${{ github.event.pull_request.number }}" --body-file /tmp/blast.md
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

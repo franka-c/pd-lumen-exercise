@@ -1,0 +1,14 @@
+id,feature,module,user_value,dev_effort,tech_dependency,score,release,notes
+F-01,Sign in with clinic invitation,Account,4,2,2,4,MVP,Invite by email or SMS from VetDesk owner record
+F-02,See my pets and their basic details,My pets,4,2,2,4,MVP,Read from VetDesk
+F-03,Read the pet's record,My pets,5,3,3,4,MVP,Notes as released by the vet
+F-04,See vaccinations and due dates,My pets,5,2,3,5,MVP,D-006
+F-05,Book an appointment with usual vet and clinic,Appointments,5,4,5,1,MVP,D-002. Score low on Q-001 but MVP by decision
+F-06,Move or cancel an appointment,Appointments,5,3,5,2,MVP,Moved to MVP by Marta on 2026-10-03
+F-07,Reminders by push and email,Home,5,3,2,5,MVP,D-006
+F-08,See active repeat prescriptions,Prescriptions,4,2,3,3,MVP,D-003
+F-09,Request a repeat prescription renewal,Prescriptions,5,3,3,4,MVP,D-004 approval rule
+F-10,Reception request queue with approve and reject,Reception,5,3,2,5,MVP,D-005
+F-11,Notification preferences,Account,2,1,1,2,Future,
+F-12,Add a pet (request to clinic),My pets,2,2,2,0,Future,
+F-13,Reception messages an owner,Reception,3,3,2,1,Future,Parked at kickoff
