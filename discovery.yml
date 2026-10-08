@@ -202,6 +202,7 @@ deliverables:
   - D-030
   - D-031
   - D-032
+  - D-033
   superseded_citations: []
   reviewed: []
   stale_upstream: []
@@ -238,6 +239,17 @@ prototype:
     reconciled: '2026-10-08'
   - path: prototype/rules/f-03-record.md
     feature: f-03-record
+    status: draft
+    covers:
+    - states
+    - long-text
+    - data-shape
+    - interaction
+    - breakpoints
+    changed: '2026-10-08'
+    reconciled: '2026-10-08'
+  - path: prototype/rules/f-04-vaccinations.md
+    feature: f-04-vaccinations
     status: draft
     covers:
     - states
