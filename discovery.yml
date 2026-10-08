@@ -205,6 +205,7 @@ deliverables:
   - D-033
   - D-034
   - D-035
+  - D-036
   superseded_citations: []
   reviewed: []
   stale_upstream: []
@@ -307,6 +308,17 @@ prototype:
     reconciled: '2026-10-08'
   - path: prototype/rules/f-10-reception.md
     feature: f-10-reception
+    status: draft
+    covers:
+    - states
+    - long-text
+    - data-shape
+    - interaction
+    - breakpoints
+    changed: '2026-10-08'
+    reconciled: '2026-10-08'
+  - path: prototype/rules/f-13-messages.md
+    feature: f-13-messages
     status: draft
     covers:
     - states
