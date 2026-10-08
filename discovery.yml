@@ -199,6 +199,7 @@ deliverables:
   - D-027
   - D-028
   - D-029
+  - D-030
   superseded_citations: []
   reviewed: []
   stale_upstream: []
@@ -211,6 +212,17 @@ prototype:
   - 06-feature-prioritization
   - 07-technical-solution-proposal
   rules_pages:
+  - path: prototype/rules/f-01-sign-in.md
+    feature: f-01-sign-in
+    status: draft
+    covers:
+    - states
+    - long-text
+    - data-shape
+    - interaction
+    - breakpoints
+    changed: '2026-10-08'
+    reconciled: '2026-10-08'
   - path: prototype/rules/f-05-booking.md
     feature: f-05-booking
     status: draft
