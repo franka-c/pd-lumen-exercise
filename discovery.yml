@@ -102,6 +102,7 @@ deliverables:
   - D-010
   - D-011
   - D-012
+  - D-013
   - D-014
   - D-015
   - D-016
@@ -117,9 +118,9 @@ deliverables:
   superseded_citations: []
   reviewed: []
   figma: https://www.figma.com/file/EXERCISE/lumen-ia-board
-  figma_checked: 2026-10-01
+  figma_checked: 2026-10-15
   stale_upstream: []
-  figma_behind: true
+  figma_behind: false
 - id: 06-feature-prioritization
   path: deliverables/06-feature-prioritization/method.md
   project_number: 4

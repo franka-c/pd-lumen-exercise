@@ -7,9 +7,9 @@ updated: 2026-10-08
 confirmed_with_client: 2026-10-15
 depends_on: [01-project-alignment, 03-user-personas]
 feeds: [06-feature-prioritization, 07-technical-solution-proposal, 10-development-ready-prototype]
-decisions: [D-002, D-004, D-005, D-006, D-009, D-010, D-011, D-012, D-014, D-015, D-016, D-017, D-018, D-019, D-020, D-022, D-023, D-024, D-025, D-026]
+decisions: [D-002, D-004, D-005, D-006, D-009, D-010, D-011, D-012, D-013, D-014, D-015, D-016, D-017, D-018, D-019, D-020, D-022, D-023, D-024, D-025, D-026]
 figma: https://www.figma.com/file/EXERCISE/lumen-ia-board
-figma_checked: 2026-10-01
+figma_checked: 2026-10-15
 ---
 
 # Information architecture
@@ -55,13 +55,13 @@ holds of its own (D-018).
 - Status per booking (D-005, confirmed by Lumen in D-023):
   - **Requested.** The card reads "Requested, waiting for the clinic", with date,
     time and pet. The owner can cancel the request but not change it (D-019).
-    Reception has 15 minutes to reject it (D-024).
+    Reception has 15 minutes to reject it (D-013, D-024).
   - **Not confirmed.** Reception rejected it within the 15 minutes. Push
     notification. The card shows "Not confirmed" with the reason reception picked,
     and "Pick another time" opens booking at the same clinic with the same pet
     selected (D-020).
   - **Confirmed.** After 15 minutes without a rejection, VetDesk confirms the
-    booking, and the owner sees it as confirmed (D-024). There is no 24-hour
+    booking, and the owner sees it as confirmed (D-013, D-024). There is no 24-hour
     pending state.
 
 ### My pets
@@ -90,7 +90,7 @@ No reminder settings: reminder rules are managed only in VetDesk (D-015).
 Three lists, Appointment requests, Prescription requests and Messages (D-010, D-025),
 filtered to the clinic the receptionist is signed in to. Each request opens a detail
 with approve and reject. An appointment request can be rejected for 15 minutes, after
-which VetDesk confirms it (D-024).
+which VetDesk confirms it (D-013, D-024).
 Reject requires a reason from a short list plus free text (D-005). Prescription
 approvals are for vets; reception sees the queue and can reject on behalf of a vet
 only for administrative reasons (owner not registered at this clinic, pet not on
