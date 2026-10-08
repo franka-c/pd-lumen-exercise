@@ -7,6 +7,7 @@ that has not been reconciled with its Figma board, material left raw for weeks.
 """
 from __future__ import annotations
 
+import datetime
 import pathlib
 import re
 import subprocess
@@ -37,12 +38,40 @@ def body_of(text: str) -> str:
     return parts[2].strip() if text.startswith("---") and len(parts) == 3 else text.strip()
 
 
+def today_dates(root: pathlib.Path) -> set:
+    """Dates that count as today: the runner's clock and the date of the last commit.
+
+    CI runs in UTC. The last commit carries the author's own timezone, so a change
+    made just after midnight in Zagreb still counts as that day.
+    """
+    days = {datetime.date.today()}
+    try:
+        out = subprocess.run(["git", "log", "-1", "--format=%cI"], cwd=root,
+                             capture_output=True, text=True, check=True).stdout.strip()
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        out = ""
+    if as_date(out):
+        days.add(as_date(out))
+    return days
+
+
+def date_moved(old_fm: dict, new_fm: dict, today: set) -> bool:
+    """True when `updated` moved, or already says today.
+
+    `updated` has day precision. A deliverable updated earlier the same day cannot
+    move again, and that date already covers a second change made the same day.
+    """
+    new = as_date(new_fm.get("updated"))
+    return new != as_date(old_fm.get("updated")) or new in today
+
+
 def check_updated_moved(root: pathlib.Path, base: str) -> None:
     """A deliverable whose content changed must also move its `updated` date.
 
     `updated` is the only signal the staleness check reads, so a forgotten bump
     would hide a change from everything downstream. Edits that touch only
     front-matter (a review, a Figma date, a status) are allowed to leave it alone.
+    A date that already says today passes, see date_moved.
     """
     try:
         names = subprocess.run(["git", "diff", "--name-only", f"{base}...HEAD"], cwd=root,
@@ -50,12 +79,13 @@ def check_updated_moved(root: pathlib.Path, base: str) -> None:
     except (subprocess.CalledProcessError, FileNotFoundError):
         warnings.append(f"could not diff against {base}, skipped the updated-date check")
         return
+    today = today_dates(root)
     manifest = "prototype/README.md"
     if any(n.startswith("prototype/") and n != manifest for n in names) and (root / manifest).exists():
         new_fm = front_matter(root / manifest)
         old_run = subprocess.run(["git", "show", f"{base}:{manifest}"], cwd=root, capture_output=True, text=True)
         old_fm = front_matter_from_text(old_run.stdout) if old_run.returncode == 0 else None
-        if new_fm and old_fm and as_date(new_fm.get("updated")) == as_date(old_fm.get("updated")):
+        if new_fm and old_fm and not date_moved(old_fm, new_fm, today):
             errors.append(f"{manifest}: something under prototype/ changed but `updated` did not move. "
                           f"The prototype is a deliverable, and its date is what flags everything built after it.")
     for rel in names:
@@ -71,7 +101,7 @@ def check_updated_moved(root: pathlib.Path, base: str) -> None:
         if body_of(old.stdout) == body_of(path.read_text(encoding="utf-8")):
             continue  # front-matter only
         old_fm = front_matter_from_text(old.stdout)
-        if old_fm and as_date(old_fm.get("updated")) == as_date(new_fm.get("updated")):
+        if old_fm and not date_moved(old_fm, new_fm, today):
             errors.append(f"{rel}: the content changed but `updated` did not move. "
                           f"If nothing changed in substance, revert the edit; otherwise bump `updated`.")
 
@@ -154,7 +184,6 @@ def main() -> int:
                 errors.append(f"{rel}: material needs a topic")
             added = as_date(fm.get("added"))
             if fm.get("status") == "raw" and added:
-                import datetime
                 age = (datetime.date.today() - added).days
                 if age > RAW_AGE_LIMIT:
                     warnings.append(f"{rel}: raw for {age} days, either work it in or drop it")
