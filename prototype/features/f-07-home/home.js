@@ -47,11 +47,17 @@
     else if (app.mode === "error") body = `<div class="alert alert-error" role="alert" data-check="error"><p>Početnu nije moguće učitati.</p><button class="btn btn-outline" data-act="retry">Pokušaj ponovno</button></div>`;
     else {
       const stale = app.mode === "stale" ? `<div class="alert" role="status" data-check="stale"><p>Podaci od ${M.cachedAt}. Osvježavanje nije uspjelo.</p><button class="btn btn-outline" data-act="retry">Pokušaj ponovno</button></div>` : "";
-      const nextCard = next ? card("next", `<p class="meta">Sljedeći termin</p>
-          ${next.status === "requested" ? `<div><span class="badge badge-requested">Zatraženo, čeka potvrdu klinike</span></div>` : ""}
-          <p class="card-title">${esc(fmtSlot(next.slot_start))}</p>
-          <p class="meta">${esc(next.pet)} · ${esc(next.type)}</p><p class="meta">${esc(M.clinics[next.clinic_id].name)}, ${esc(M.vets[next.vet_id])}</p>
-          <div>${next.status === "requested" ? `<a class="btn btn-outline" href="../f-05-booking/index.html?state=list">Pogledaj</a>` : `<a class="btn btn-outline" href="../f-06-move-cancel/index.html?state=actions-sheet" data-check="change">Promijeni ili otkaži</a>`}</div>`) : "";
+      const days = next ? Math.round((Date.parse(next.slot_start.slice(0, 10)) - Date.parse(M.today)) / 864e5) : 0;
+      const count = days === 0 ? `DANAS U ${next && next.slot_start.slice(11, 16)}` : days === 1 ? "SUTRA" : `ZA ${days} DANA`;
+      const pets = `<div class="pets-row" role="tablist" aria-label="Ljubimci" data-check="pets-row">
+          <button class="pet-chip" role="tab" aria-selected="true"><span class="pet-avatar is-all" style="width:64px;height:64px">Svi</span><span>Svi</span></button>
+          ${M.pets.map(p => `<button class="pet-chip" role="tab" aria-selected="false"><span class="pet-avatar ${p.needs ? "has-ring" : ""}" style="width:64px;height:64px">${esc(p.name[0])}</span><span>${esc(p.name)}</span></button>`).join("")}</div>`;
+      const nextCard = next ? `<section class="hero" ${app.focus === "next" ? 'style="outline:3px solid var(--color-foreground);outline-offset:2px"' : ""} data-check="card-next">
+          <p class="hero-count" data-check="countdown">${count}</p><p class="hero-date">${esc(fmtSlot(next.slot_start))}</p>
+          <p>${esc(next.pet)} · ${esc(next.type)} · ${esc(M.vets[next.vet_id])}</p>
+          ${next.status === "requested" ? `<p><span class="badge hero-badge">Zatraženo, čeka potvrdu klinike</span></p>` : ""}
+          <div>${next.status === "requested" ? `<a class="btn btn-on-primary" href="../f-05-booking/index.html?state=list">Pogledaj</a>` : `<a class="btn btn-on-primary" href="../f-06-move-cancel/index.html?state=actions-sheet" data-check="change">Promijeni ili otkaži</a>`}</div></section>`
+        : `<section class="hero hero-empty" data-check="hero-empty"><p class="hero-date">Nemate zakazanih termina</p><div><a class="btn btn-on-primary" href="../f-05-booking/index.html?state=book">Rezerviraj termin</a></div></section>`;
       const dueCards = due.slice().sort((a, b) => a.due_date.localeCompare(b.due_date)).map(v => card(v.pet_id, `
           <p class="card-title" style="overflow-wrap:anywhere" data-check="due-title">${esc(v.pet)}: ${esc(v.type.charAt(0).toLowerCase() + v.type.slice(1))}</p>
           <p data-check="${v.due_date < M.today ? "overdue" : "upcoming"}">${v.due_date < M.today ? "Dospjelo" : "Dospijeva"} ${esc(fmtShort(v.due_date))}</p>
@@ -62,8 +68,7 @@
           <span class="option-body"><span class="truncate" style="display:block;font-weight:var(--font-weight-heading)">Rex: nalazi su stigli. Možete ih pogledati u kartonu u aplikaciji ili nas nazovite.</span><span class="meta">Lumen Trešnjevka · danas 09:15</span></span></a>
           <a class="btn btn-outline" href="../f-13-messages/index.html?side=owner&state=all">Prikaži sve</a></section>
         <article class="card" data-check="renewal"><p class="card-title">Rex: Caninsulin 40 IU/ml</p><p>Možete zatražiti obnovu.</p><div><a class="btn btn-primary" href="../f-08-f-09-prescriptions/index.html?state=request">Zatraži obnovu</a></div></article>`;
-      const empty = !next && !due.length ? `<div class="empty" data-check="empty"><p>Nema ništa novo. Kad vašem ljubimcu nešto dospije, vidjet ćete to ovdje.</p><a class="btn btn-primary" href="../f-05-booking/index.html?state=book">Rezerviraj termin</a></div>` : "";
-      body = stale + empty + nextCard + dueCards + later;
+      body = stale + pets + nextCard + (due.length ? `<h2 class="section-title">Treba napraviti</h2>` : "") + dueCards + later;
     }
     return `<header class="topbar"><h1>Dobar dan, ${esc(M.owner.first_name)}</h1></header>
       <main class="content"><div style="display:flex;flex-direction:column;gap:var(--space-3)" data-check="home">${body}</div></main>${tabbar()}`;

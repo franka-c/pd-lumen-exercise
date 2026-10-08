@@ -2,7 +2,7 @@
 kind: rules
 feature: f-07-home
 status: draft
-decisions: [D-006, D-010, D-014, D-015, D-018, D-031, D-033, D-034]
+decisions: [D-006, D-010, D-014, D-015, D-018, D-031, D-033, D-034, D-037]
 covers: [states, long-text, data-shape, interaction, breakpoints]
 ---
 
@@ -10,7 +10,7 @@ covers: [states, long-text, data-shape, interaction, breakpoints]
 
 Fictional client, created for an internal DECODE exercise.
 
-Prototype: `prototype/features/f-07-home/index.html`, version 0.8.0. Every state
+Prototype: `prototype/features/f-07-home/index.html`, version 1.1.0. The same Home runs in the connected prototype, `prototype/flow/`. Every state
 opens with `?state=<id>`. `?long=1` loads long content and `?text=200` doubles the
 text size. The mock "today" is 20 October 2026.
 
@@ -36,7 +36,7 @@ renewal card, with one action per card.
 | --- | --- |
 | Next appointment, two due items, places for F-13 and F-09 | `home` |
 | Next appointment still requested | `home-requested` |
-| Nothing new | `home-empty` |
+| No appointment and nothing due | `home-empty` |
 | Loading | `home-loading` |
 | Failed, retry | `home-error` |
 | VetDesk not answering, last saved data | `home-stale` |
@@ -66,16 +66,29 @@ F-04). Reminders are scheduled by the backend:
 **Quiet hours, unconfirmed:** no push between 21:00 and 08:00. What falls in them waits
 until 08:00 (Q-020).
 
-## Interaction rules
+## Layout: "Ljubimci na vrhu" (D-037)
 
-- Home, top to bottom: "Dobar dan, <first name>", the next appointment, one card per
-  due item with overdue first and calm (D-033), then "Od vaše klinike" (F-13) and the
-  renewal card (F-09).
+- **Pets row.** Round photos, or the first letter, with "Svi" selected by default. A
+  Lumen Teal ring marks a pet that needs something: a due item, a renewal it can
+  request, or a booking that was not confirmed. Tapping a pet filters all of Home to
+  it. A pet that has died is not in the row (D-031).
+- **Next appointment.** A Lumen Teal card with a countdown ("ZA 2 DANA", "SUTRA",
+  "DANAS U 10:30"), the date, pet, type and vet, and one action. A requested booking
+  shows its badge. With no appointment the card turns Warm Sand: "Nemate zakazanih
+  termina" and "Rezerviraj termin".
+- **"Treba napraviti".** Not-confirmed bookings, due items (overdue first and calm,
+  D-033), renewals and approved prescriptions until pickup. One action each.
+- **"Od vaše klinike".** The last three messages, the unread count in the heading.
+- Coral is not used until Q-012 is settled.
+
+
+- Home, top to bottom: "Dobar dan, <first name>", the pets row, the next appointment,
+  "Treba napraviti", then "Od vaše klinike" (F-13).
 - The next appointment's one action is "Promijeni ili otkaži" (F-06), or "Pogledaj" if
   it is still requested.
 - A due card's one action is "Rezerviraj" (F-05).
-- Nothing at all: "Nema ništa novo. Kad vašem ljubimcu nešto dospije, vidjet ćete to
-  ovdje." with "Rezerviraj termin".
+- No appointment: the Warm Sand card with "Rezerviraj termin". Sections with nothing
+  in them are left out.
 - Each push shows when it would arrive. Tapping it opens Home with that card marked.
 - An email has a subject, the reminder, "Otvori u aplikaciji", the clinic's phone and
   "Primate ovu poruku jer ste klijent klinike Lumen." **No unsubscribe link while F-11
@@ -98,6 +111,7 @@ To confirm with Marta at the next review.
 | Appointment reminders, the day before | only due items, as the IA; push only | fewer missed appointments, and email reaches older owners. Outside the IA, so Marta confirms |
 | Home order, empty Home, push and email content, quiet hours, no unsubscribe link for now | | proposed in the spec, confirmed by the designer |
 | Names not declined, the on-the-day reminder at 08:00 | | added in the build, approved by the designer |
+| The "Ljubimci na vrhu" layout | a timeline (Danas, Ovaj tjedan, Uskoro); a summary sentence with a swipeable row of cards | the pet is the owner's way in, and the ring shows at a glance which pet needs something |
 
 Components: none added.
 

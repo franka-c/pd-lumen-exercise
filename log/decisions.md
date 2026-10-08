@@ -599,3 +599,21 @@ notice are Q-022.
 October 2026, decided by Antonija (design). To confirm with Marta at the next review.
 
 **Supersedes.** None.
+
+## D-037
+
+**Decision.** Home uses the "Ljubimci na vrhu" layout: a row of pet photos with a ring
+on any pet that needs something, filtering Home by pet; a Lumen Teal card for the next
+appointment with a countdown; then "Treba napraviti" and "Od vaše klinike". The
+prototype also gets a connected version, `prototype/flow/`, where the owner, reception
+and the vet share one state.
+
+**Why.** The owner thinks of their pet first, and the ring shows at a glance which pet
+needs something. The connected prototype shows the client how the features work
+together, while the feature pages stay the specification developers build from.
+
+**Source.** `prototype/rules/f-07-home.md`, prototype design session, 8 October 2026,
+decided by Antonija (design). The alternatives were a timeline and a summary sentence
+with swipeable cards. To show Marta at the next review.
+
+**Supersedes.** None. It changes F-07's layout, not its rules (D-034).

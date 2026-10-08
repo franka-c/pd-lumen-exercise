@@ -6,7 +6,7 @@ owner: designer
 updated: 2026-10-08
 depends_on: [01-project-alignment, 01-project-alignment-risks, 03-user-personas, 05-information-architecture, 06-feature-prioritization, 07-technical-solution-proposal]
 feeds: []
-decisions: [D-010, D-026, D-027, D-028, D-029, D-030, D-031, D-032, D-033, D-034, D-035, D-036]
+decisions: [D-010, D-026, D-027, D-028, D-029, D-030, D-031, D-032, D-033, D-034, D-035, D-036, D-037]
 ---
 
 # Development-ready prototype
@@ -25,11 +25,15 @@ at each client review.
 
 ## Status
 
-Version 1.0.0. Every MVP feature in 06 is built and verified in the browser, with a
+Version 1.1.0. Every MVP feature in 06 is built and verified in the browser, with a
 rules page under `rules/`: F-01 sign-in, F-02 my pets, F-03 the record, F-04
 vaccinations, F-05 booking, F-06 moving or cancelling, F-07 Home and reminders, F-08
 and F-09 repeat prescriptions, F-10 the reception web view, F-13 reception messages.
-Open `index.html` or serve this folder and open a feature.
+
+`flow/` is the connected prototype: one app where Ivana (owner), Sanja (reception) and
+dr. Horvat (vet) share one state, with a clock for the 15-minute rules and reminders
+(D-037). It is for showing how the features work together. The feature pages remain
+the specification, and every screen in `flow/` links to its own.
 
 Design system: the shadcn/ui kit for structure and Lumen's brand for colour, type and
 corners, snapshotted in `tokens.css` (D-007). Values the brand does not set are marked

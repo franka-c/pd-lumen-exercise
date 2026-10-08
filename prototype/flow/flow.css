@@ -1,0 +1,14 @@
+/* The connected prototype: the scaffolding bar (the Home styles live in shared.css).
+   Product styles use tokens only. The yellow bar is scaffolding, visibly not the product. */
+
+/* ---------- Scaffolding: role switcher and clock ---------- */
+.flow-bar { background: #111; color: #eee; border-bottom: 2px dashed #ff0; font: 12px/16px ui-monospace, Menlo, monospace; display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: space-between; padding: 6px 12px; position: sticky; top: 0; z-index: 60; }
+.flow-roles { display: flex; gap: 4px; flex-wrap: wrap; }
+.flow-bar button, .flow-bar a { font: inherit; color: #ff0; background: none; border: 1px dashed #ff0; border-radius: 4px; padding: 4px 8px; cursor: pointer; text-decoration: none; position: relative; }
+.flow-roles button[aria-selected="true"] { background: #ff0; color: #111; }
+.flow-roles small { opacity: 0.8; }
+.flow-dot { position: absolute; top: -4px; right: -4px; width: 10px; height: 10px; border-radius: 50%; background: #f33; border: 2px solid #111; }
+.flow-clock { display: flex; gap: 4px; flex-wrap: wrap; align-items: center; }
+.flow-clock > span { color: #fff; padding-right: 4px; }
+body:has(.flow-bar) .push { top: 56px; }
+@media (min-width: 768px) { body:has(.flow-bar) { padding-top: 0; } body:has(.flow-bar) .app { margin-top: var(--space-6); } }
