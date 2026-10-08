@@ -33,8 +33,8 @@ window.MOCK = {
 
   // What VetDesk returns as due, per pet (D-014). null next_due = VetDesk returned no date.
   vaccinationDue: {
-    "p-rex": { due_now: false, next_due: "2027-03-03" },
-    "p-mica": { due_now: true, next_due: "2026-10-28" }
+    "p-rex": { due_now: true, next_due: "2026-09-03" },     // rabies overdue, as in F-04
+    "p-mica": { due_now: false, next_due: "2027-03-05" }
   },
 
   types: {

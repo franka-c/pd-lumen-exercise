@@ -511,3 +511,18 @@ October 2026, decided by Antonija (design). To confirm with Marta and Petra at t
 next review.
 
 **Supersedes.** None.
+
+## D-033
+
+**Decision.** In F-04, vaccinations, an overdue vaccination is listed first, with
+"Dospjelo" and its date in the normal text colour, and a booking button. No red, no
+warning.
+
+**Why.** The brand's tone is calm, with no exclamation marks, and the owner should
+not feel scolded. Listing it first keeps it from being missed.
+
+**Source.** `prototype/rules/f-04-vaccinations.md`, prototype design session for F-04,
+8 October 2026, decided by Antonija (design). To confirm with Petra at the next
+review.
+
+**Supersedes.** None.

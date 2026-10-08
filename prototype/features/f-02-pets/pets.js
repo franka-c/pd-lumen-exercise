@@ -96,7 +96,7 @@
           <p class="meta">Podatke vodi klinika. Za ispravak se javite klinici.</p></section>
         ${dead ? "" : `<a class="btn btn-primary btn-lg" href="../f-05-booking/index.html?state=book" data-check="book">Rezerviraj termin</a>`}
         <nav class="option-list" aria-label="${esc(p.name)}">${sections.map(([l, f]) => `<button class="option" style="font:inherit;color:inherit;background:var(--color-background);justify-content:space-between" data-act="section" data-f="${f}">
-          <span>${l}${dead && l === "Karton" ? " (samo za čitanje)" : ""}</span>${f === "F-03" ? "<span aria-hidden=\"true\">›</span>" : `<span class="badge badge-unconfirmed">${f}, još nije izrađeno</span>`}</button>`).join("")}</nav>
+          <span>${l}${dead && l === "Karton" ? " (samo za čitanje)" : ""}</span>${f === "F-03" || f === "F-04" ? "<span aria-hidden=\"true\">›</span>" : `<span class="badge badge-unconfirmed">${f}, još nije izrađeno</span>`}</button>`).join("")}</nav>
       </main>${tabbar()}`;
   }
 
@@ -140,7 +140,7 @@
       case "remove": app.sheet = "remove"; break;
       case "remove-confirm": pets.find(p => p.id === app.petId).photo = null; app.sheet = null; toast("Fotografija je uklonjena"); return;
       case "sheet-close": app.sheet = null; break;
-      case "section": if (t.dataset.f === "F-03") { location.href = `../f-03-record/index.html?state=${app.petId === "p-bobi" ? "record-deceased" : "record"}`; return; } toast(`[Prototip] ${t.dataset.f} još nije izrađen`); return;
+      case "section": if (t.dataset.f === "F-03") { location.href = `../f-03-record/index.html?state=${app.petId === "p-bobi" ? "record-deceased" : "record"}`; return; } if (t.dataset.f === "F-04") { location.href = "../f-04-vaccinations/index.html?state=list"; return; } toast(`[Prototip] ${t.dataset.f} još nije izrađen`); return;
       case "nav": if (t.dataset.to === "pets") { app.view = "list"; break; } toast("[Prototip] To područje nije dio F-02"); return;
       case "fail-photo": app.failNext = true; toast("[Prototip] Sljedeće spremanje: greška"); return;
       default: return;

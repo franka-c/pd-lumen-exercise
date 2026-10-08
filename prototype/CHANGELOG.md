@@ -4,6 +4,8 @@ Versioned, newest first. Tagged at each client review session.
 
 | Date | Version | Feature | What changed | Decision |
 | --- | --- | --- | --- | --- |
+| 2026-10-08 | 0.7.0 | F-04 | First version. What VetDesk returns as due, overdue first and calm, booking from a due item, and the history | D-033 |
+| 2026-10-08 | 0.7.0 | F-05 | Booking takes the pet, type and clinic from the link. Mock data aligned with F-04: Rex is due, the not-due warning shows Mica | D-033 |
 | 2026-10-08 | 0.6.0 | F-03 | First version. The record by year, 20 at a time, consultations with the notes and documents the vet released, an in-app document viewer. F-02's "Karton" opens it | D-032 |
 | 2026-10-08 | 0.5.0 | F-02 | First version. Pets list and the pet's page from VetDesk, owner photos, a "Preminuli" section with the record read only. Definition values now wrap in every feature | D-031 |
 | 2026-10-08 | 0.4.0 | F-01 | First version. Activation from the clinic invitation, sign-in with email or phone and password, password recovery by link or SMS code, invitation request with the same reply for everyone, Account with sign-out. The bottom navigation appears for the first time. Links use the primary colour | D-030 |
