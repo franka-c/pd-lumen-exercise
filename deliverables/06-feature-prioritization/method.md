@@ -3,11 +3,11 @@ deliverable: 06-feature-prioritization
 project_number: 4
 status: confirmed
 owner: pm
-updated: 2026-10-02
+updated: 2026-10-08
 confirmed_with_client: 2026-10-03
 depends_on: [05-information-architecture]
 feeds: [07-technical-solution-proposal, 10-development-ready-prototype]
-decisions: [D-002, D-003, D-004, D-006, D-008]
+decisions: [D-002, D-004, D-006, D-009, D-010, D-011]
 ---
 
 # Feature prioritization
@@ -27,6 +27,14 @@ Future from 0 to 3, Discard below 0 unless a decision overrides.
 ## Result
 
 Thirteen features. Nine MVP, three Future, one Discard. The three Future items all
-depend on Q-001 or on reception messaging, which is parked. Marta confirmed the
-split on 3 October with one change: rescheduling moved from Future to MVP because
-moving appointments is most of reception's phone load.
+depend on Q-001 or on reception messaging, which was parked at the time. Marta
+confirmed the split on 3 October with one change: rescheduling moved from Future to
+MVP because moving appointments is most of reception's phone load.
+
+## After the IA workshop, 8 October
+
+- F-08 and F-09 move from the Prescriptions module to My pets, because repeat
+  prescriptions now live inside the pet's record (D-009, D-010). Scores unchanged.
+- F-13, reception messages an owner, is open. Its score of 1 was set while reception
+  messaging was parked. D-011 brings it into the first version, so the score and
+  release are the PM's to redo.

@@ -103,3 +103,53 @@ top level because of D-003.
 **Source.** `log/calls/2026-09-30-ia-review.md`, agreed by Marta and Petra.
 
 **Supersedes.** None.
+
+## D-009
+
+**Decision.** Repeat prescriptions live inside the pet's record, with a renewal card
+on Home.
+
+**Why.** Both owners in the test looked for the repeat prescription under the pet.
+The card on Home keeps the prominence Marta wanted because of call volume.
+
+**Source.** `log/calls/2026-10-08-ia-workshop.md`, said by Marta.
+
+**Supersedes.** D-003.
+
+## D-010
+
+**Decision.** The app has four top-level areas: Home, Appointments, My pets,
+Account. The reception page keeps its two lists, Appointment requests and
+Prescription requests, until Q-004 is settled.
+
+**Why.** Prescriptions moved under the pet (D-009), so the fifth area is no longer
+needed.
+
+**Source.** `log/calls/2026-10-08-ia-workshop.md`, proposed by Luka, agreed by Marta
+and Petra.
+
+**Supersedes.** D-008.
+
+## D-011
+
+**Decision.** Reception can send one-way messages to owners in the first version,
+from a short list of templates plus a free text field. The owner gets a push
+notification and sees the message in the app.
+
+**Why.** Forty calls a day at Trešnjevka are reception telling an owner something,
+not booking. Both receptionists in the test asked for it unprompted.
+
+**Source.** `log/calls/2026-10-08-ia-workshop.md`, said by Marta.
+
+**Supersedes.** None. Reception messaging was parked at kickoff, not decided.
+
+## D-012
+
+**Decision.** Owners cannot reply to reception messages in the app.
+
+**Why.** Two-way messaging is chat, which D-006 keeps out of the first version.
+Petra's veto.
+
+**Source.** `log/calls/2026-10-08-ia-workshop.md`, said by Petra.
+
+**Supersedes.** None.
