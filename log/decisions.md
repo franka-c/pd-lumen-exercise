@@ -351,3 +351,35 @@ app, and the reception web view with three lists. The prototype starts.
 **Source.** `log/calls/2026-10-15-ia-review.md`, said by Marta and Petra.
 
 **Supersedes.** None.
+
+## D-027
+
+**Decision.** F-05 booking behaves as follows, beyond D-002 and D-019 to D-024:
+
+- Owners can book every appointment type their clinic offers, including surgery
+  and emergency.
+- The vet defaults to the pet's usual vet and can be changed to any vet at the
+  selected clinic. The usual vet is listed first. A pet with no usual vet gets no
+  preselection.
+- Choosing an emergency shows "call the clinic" with the clinic's phone number. The
+  request can still be sent.
+- Choosing a vaccination when VetDesk returns nothing due shows the next due date.
+  The request can still be sent.
+- The owner gets a push notification when VetDesk confirms the booking, as well as
+  when reception rejects it (D-020).
+- Owners see and book free times up to four weeks ahead.
+- A cancelled request is kept as `cancelled`, not deleted. "Pick another time" also
+  keeps the vet and type. Closing the booking after a time is chosen asks first. Times
+  show the start only.
+- The app's text is in Croatian.
+
+**Why.** None of the inputs settled these, and the prototype cannot be built without
+them. The emergency notice and the vaccination warning answer Petra's kickoff
+complaint that the VetDesk widget could not see the pet's record, without blocking
+an owner who has a reason the app cannot know.
+
+**Source.** `prototype/rules/f-05-booking.md`, prototype design session for F-05, 8
+October 2026, decided by Antonija (design). To confirm with Marta at the next review.
+The emergency notice touches a clinical case, so Petra should see it too.
+
+**Supersedes.** None.

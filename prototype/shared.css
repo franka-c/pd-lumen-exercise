@@ -1,0 +1,297 @@
+/* Layout and component styles for the Lumen owner app prototype.
+   Every value comes from tokens.css. Component shapes follow the shadcn/ui kit
+   (Button, Badge, Radio Group, Select, Drawer), restyled with Lumen's tokens. */
+
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600&display=swap");
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { font-size: 100%; }
+html.text-200 { font-size: 200%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-base);
+  font-weight: var(--font-weight-body);
+  color: var(--color-foreground);
+  background: var(--color-muted);
+}
+
+h1, h2, h3 { font-weight: var(--font-weight-heading); margin: 0; }
+h1 { font-size: var(--text-2xl); line-height: var(--leading-2xl); }
+h2 { font-size: var(--text-lg); line-height: var(--leading-lg); }
+h3 { font-size: var(--text-base); line-height: var(--leading-base); }
+p { margin: 0; }
+
+/* The phone. Full width below 768px, a centred column from 768px. */
+.app {
+  min-height: 100vh;
+  background: var(--color-background);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+@media (min-width: 768px) {
+  body { padding: var(--space-8) 0; }
+  .app {
+    max-width: 560px;
+    min-height: calc(100vh - 2 * var(--space-8));
+    margin: 0 auto;
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: var(--border-width) solid var(--color-border);
+  background: var(--color-background);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+.topbar h1 { flex: 1; font-size: var(--text-xl); line-height: var(--leading-xl); }
+
+.content { flex: 1; padding: var(--space-4); display: flex; flex-direction: column; gap: var(--space-6); }
+
+/* Button, after the shadcn Button. Primary is Lumen Teal (see tokens: coral is open). */
+.btn {
+  font: inherit;
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+  font-weight: var(--font-weight-medium);
+  min-height: var(--control-height);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius);
+  border: var(--border-width) solid transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  text-align: center;
+  text-decoration: none;
+}
+.btn:focus-visible { outline: 2px solid var(--color-ring); outline-offset: 2px; }
+.btn-primary { background: var(--color-primary); color: var(--color-primary-foreground); }
+.btn-outline { background: var(--color-background); color: var(--color-foreground); border-color: var(--color-input); }
+.btn-ghost { background: transparent; color: var(--color-foreground); }
+.btn-destructive { background: var(--color-destructive); color: var(--color-destructive-foreground); }
+.btn-lg { min-height: var(--control-height-lg); font-size: var(--text-base); line-height: var(--leading-base); }
+.btn-block { width: 100%; }
+.btn[disabled] { opacity: 0.5; cursor: not-allowed; }
+.btn-icon { padding: var(--space-2); min-width: var(--control-height); }
+
+/* Badge, after the shadcn Badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--text-xs);
+  line-height: var(--leading-xs);
+  font-weight: var(--font-weight-medium);
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-sm);
+  border: var(--border-width) solid transparent;
+  max-width: 100%;   /* wraps rather than overflowing at large text sizes */
+}
+.badge-requested { background: var(--color-secondary); color: var(--color-secondary-foreground); }
+.badge-confirmed { background: var(--color-primary); color: var(--color-primary-foreground); }
+.badge-rejected { background: var(--color-background); color: var(--color-destructive); border-color: var(--color-destructive); }
+.badge-unconfirmed { background: var(--color-background); color: var(--color-muted-foreground); border: var(--border-width) dashed var(--color-muted-foreground); }
+
+/* Card: the kit's Card (page "Card") */
+.card {
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-card);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.card-row { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-3); }
+.card-title { font-weight: var(--font-weight-heading); overflow-wrap: anywhere; }
+.meta { font-size: var(--text-sm); line-height: var(--leading-sm); color: var(--color-muted-foreground); }
+.clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.truncate { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.linklike { background: none; border: 0; padding: 0; font: inherit; color: var(--color-primary); font-weight: var(--font-weight-medium); cursor: pointer; text-decoration: underline; }
+
+/* Tabs: the kit's Tabs / Trigger, Active On/Off (page "Tabs") */
+.tabs { display: flex; gap: var(--space-1); padding: var(--space-1); background: var(--color-muted); border-radius: var(--radius); }
+.tab { flex: 1; font: inherit; font-size: var(--text-sm); line-height: var(--leading-sm); font-weight: var(--font-weight-medium); border: 0; border-radius: var(--radius-sm); padding: var(--space-2); background: transparent; color: var(--color-muted-foreground); cursor: pointer; }
+.tab[aria-selected="true"] { background: var(--color-background); color: var(--color-foreground); box-shadow: var(--shadow-xs); }
+
+/* Form sections */
+.field { display: flex; flex-direction: column; gap: var(--space-2); border: 0; padding: 0; margin: 0; min-width: 0; }
+.field > legend, .field > label.label { font-size: var(--text-sm); line-height: var(--leading-sm); font-weight: var(--font-weight-heading); padding: 0; margin-bottom: var(--space-2); }
+
+/* Radio card, composed from the kit's Radio Group inside a bordered row */
+.option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  border: var(--border-width) solid var(--color-input);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  cursor: pointer;
+  min-width: 0;
+}
+.option:has(input:checked) { border-color: var(--color-primary); box-shadow: 0 0 0 1px var(--color-primary); }
+.option:has(input:focus-visible) { outline: 2px solid var(--color-ring); outline-offset: 2px; }
+.option input { accent-color: var(--color-primary); width: 16px; height: 16px; margin: 0; flex: none; }
+.option-body { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+.option-list { display: flex; flex-direction: column; gap: var(--space-2); }
+
+/* Select, after the shadcn Select (native element for the prototype) */
+.select {
+  font: inherit;
+  font-size: var(--text-sm);
+  min-height: var(--control-height);
+  padding: var(--space-2) var(--space-3);
+  border: var(--border-width) solid var(--color-input);
+  border-radius: var(--radius);
+  background: var(--color-background);
+  color: var(--color-foreground);
+  width: 100%;
+}
+.select:focus-visible { outline: 2px solid var(--color-ring); outline-offset: 2px; }
+
+/* Chips: the kit's Toggle Group, one item pressed at a time (page "Toggle Group") */
+.chips { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.chip[aria-pressed="true"] { background: var(--color-primary); color: var(--color-primary-foreground); border-color: var(--color-primary); }
+
+/* Day strip and time grid: Toggle Group items, as the chips */
+.days { display: flex; gap: var(--space-2); overflow-x: auto; padding-bottom: var(--space-2); scroll-snap-type: x proximity; }
+.day { flex: none; flex-direction: column; min-width: 56px; padding: var(--space-2); gap: 0; scroll-snap-align: start; }
+.day small { font-size: var(--text-xs); line-height: var(--leading-xs); font-weight: var(--font-weight-body); }
+.day[aria-pressed="true"] { background: var(--color-primary); color: var(--color-primary-foreground); border-color: var(--color-primary); }
+.day.is-empty { color: var(--color-muted-foreground); }
+.times { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-2); }
+.time[aria-pressed="true"] { background: var(--color-primary); color: var(--color-primary-foreground); border-color: var(--color-primary); }
+@media (max-width: 374px) { .times { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 768px) { .times { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+
+/* Alert: the kit's Alert, Variant Default and Destructive, with its Button slot (page "Alert") */
+.alert {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-card);
+  color: var(--color-card-foreground);
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+}
+.alert-title { font-weight: var(--font-weight-heading); }
+.alert-error { background: var(--color-background); border-color: var(--color-destructive); color: var(--color-destructive); }
+.alert .btn { align-self: flex-start; }
+
+/* Skeleton: the kit's Skeleton (page "Skeleton") */
+.skeleton { background: var(--color-muted); border-radius: var(--radius); min-height: var(--control-height); animation: pulse 1.5s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: 0.5; } }
+@media (prefers-reduced-motion: reduce) { .skeleton { animation: none; } }
+
+.empty { text-align: center; display: flex; flex-direction: column; align-items: center; gap: var(--space-3); padding: var(--space-10) var(--space-4); }
+
+/* Sticky footer for the main action */
+.footer {
+  position: sticky;
+  bottom: 0;
+  background: var(--color-background);
+  border-top: var(--border-width) solid var(--color-border);
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* Bottom sheet confirmation: the kit's Drawer (page "Drawer") */
+.scrim { position: fixed; inset: 0; background: var(--color-overlay); display: flex; align-items: flex-end; justify-content: center; z-index: 20; }
+.sheet {
+  background: var(--color-background);
+  width: 100%;
+  max-width: 560px;
+  border-radius: var(--radius) var(--radius) 0 0;
+  padding: var(--space-6) var(--space-4) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.sheet .actions { display: flex; flex-direction: column; gap: var(--space-2); margin-top: var(--space-2); }
+
+/* Toast: the kit's Sonner, State Default (page "Sonner") */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(var(--control-height-lg) + var(--space-8));  /* above the sticky footer */
+  transform: translateX(-50%);
+  background: var(--color-background);
+  color: var(--color-foreground);
+  border: var(--border-width) solid var(--color-border);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius);
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+  box-shadow: var(--shadow-lg);
+  z-index: 30;
+  max-width: calc(100% - 2 * var(--space-4));
+}
+
+/* A push notification, simulated by the prototype. Visually the phone's, not the app's */
+.push {
+  position: fixed;
+  top: var(--space-3);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(400px, calc(100% - 2 * var(--space-4)));
+  background: var(--color-background);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-3) var(--space-4);
+  z-index: 40;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+}
+.push small { color: var(--color-muted-foreground); font-size: var(--text-xs); }
+
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- Prototype scaffolding, not part of the product ---------- */
+.proto-panel {
+  position: fixed;
+  right: var(--space-2);
+  top: 10px;
+  z-index: 50;
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 12px;
+  line-height: 16px;
+}
+.proto-panel > button {
+  font: inherit; background: #111; color: #ff0; border: 2px dashed #ff0; border-radius: 4px; padding: 6px 10px; cursor: pointer;
+}
+.proto-panel .proto-body {
+  display: none; margin-top: 6px; background: #111; color: #eee; border: 2px dashed #ff0; border-radius: 4px; padding: 10px;
+  width: 280px; max-height: 70vh; overflow: auto;
+}
+.proto-panel.open .proto-body { display: block; }
+.proto-body h4 { margin: 8px 0 4px; color: #ff0; font-size: 12px; }
+.proto-body a, .proto-body button { color: #9cf; background: none; border: 0; font: inherit; cursor: pointer; padding: 1px 0; text-align: left; display: block; }
+.proto-body a[aria-current="true"] { color: #ff0; font-weight: bold; }
+
+.devdoc { margin: var(--space-4); font-size: 13px; line-height: 18px; font-family: ui-monospace, Menlo, monospace; background: #fafafa; border: 2px dashed #999; border-radius: 4px; padding: 10px; color: #222; }
+.devdoc summary { cursor: pointer; font-weight: bold; }
+.devdoc table { border-collapse: collapse; width: 100%; margin: 8px 0; }
+.devdoc th, .devdoc td { border: 1px solid #ccc; padding: 4px 6px; text-align: left; vertical-align: top; }
+.devdoc .unconf { color: #b00; font-weight: bold; }
+@media (min-width: 768px) { .devdoc { max-width: 900px; margin: var(--space-4) auto; } }
