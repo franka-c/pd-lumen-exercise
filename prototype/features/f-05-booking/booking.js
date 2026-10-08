@@ -423,7 +423,7 @@
       case "discard-confirm": app.sheet = null; app.view = "list"; app.book = null; break;
       case "pick-another": pickAnother(t.dataset.id); render(); window.scrollTo(0, 0); return;
       case "more": { const p = document.getElementById("rt-" + t.dataset.id); p.classList.remove("clamp-3"); t.hidden = true; return; }
-      case "f06": showToast("[Prototip] Premještanje i otkazivanje su F-06, još nisu izrađeni"); return;
+      case "f06": location.href = "../f-06-move-cancel/index.html?state=actions-sheet"; return;  // the flow continues in F-06
       case "close-book": closeBook(); return;
       case "type": f.type = t.dataset.type; f.time = null; f.error = null; if (f.day) loadSlots(); break;
       case "day": f.day = t.dataset.day; f.time = null; if (f.slotsMode === "none-day") f.slotsMode = "normal"; loadSlots(); return;
