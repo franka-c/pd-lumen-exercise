@@ -444,3 +444,29 @@ part of Q-013. Sign-in and accounts are Q-015.
 next review.
 
 **Supersedes.** None.
+
+## D-030
+
+**Decision.** F-01, owner sign-in, works as follows:
+
+- The invitation link opens the app, and the owner sets a password. Afterwards they
+  sign in with their email address or phone number and the password.
+- A forgotten password is reset by a link to the email address or a code by SMS to
+  the phone number, whichever the owner signs in with.
+- An owner without an invitation can request one in the app with an email address or
+  phone number. The reply is always the same, so the app never reveals who is a
+  client.
+- One account per person, across clinics.
+
+**Why.** 06 has the clinic invite owners by email or SMS from the VetDesk owner
+record, but nothing says how they sign in afterwards. A password is familiar to
+owners. Signing in with a phone number keeps owners with no email address in the
+app (A-2).
+
+**Not decided here.** The password rule, how long an invitation and a password link
+are valid, and the attempt limit are Q-016.
+
+**Source.** `prototype/rules/f-01-sign-in.md`, prototype design session for F-01, 8
+October 2026, decided by Antonija (design). To confirm with Marta at the next review.
+
+**Supersedes.** None.

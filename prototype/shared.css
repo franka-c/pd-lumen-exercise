@@ -20,6 +20,7 @@ body {
 }
 
 h1, h2, h3 { font-weight: var(--font-weight-heading); margin: 0; }
+a { color: var(--color-primary); }
 h1 { font-size: var(--text-2xl); line-height: var(--leading-2xl); }
 h2 { font-size: var(--text-lg); line-height: var(--leading-lg); }
 h3 { font-size: var(--text-base); line-height: var(--leading-base); }
@@ -338,3 +339,6 @@ textarea.input { min-height: 80px; resize: vertical; }
 
 /* Prototype panel sits bottom right on the reception view, clear of the signed-in user */
 body:has(.desk-header) .proto-panel { top: auto; bottom: var(--space-3); }
+
+/* Bottom navigation of the owner app (D-010): four tabs share the width and wrap at large text */
+nav.footer .tab { min-width: 0; overflow-wrap: anywhere; padding: var(--space-2) var(--space-1); }
