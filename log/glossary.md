@@ -15,3 +15,5 @@ say so and cite the decision.
 | Reception | The front desk staff at a clinic, who manage requests | They use "reception", not "admin" |
 | VetDesk | The practice management software all 14 clinics run on | Partner API status unknown, Q-001 |
 | Usual vet | The vet a pet has seen most, as VetDesk records it | D-002 |
+| Reminder | An item VetDesk returns as due for a pet, with a type, a due date and a clinic | D-014 |
+| From your clinic | The list of reception messages on Home | D-018 |

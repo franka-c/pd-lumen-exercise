@@ -6,7 +6,7 @@ counts:
   stale: 0
   superseded_citations: 0
   calls: 3
-  material_raw: 1
+  material_raw: 4
 deliverables:
 - id: 01-project-alignment
   path: deliverables/01-project-alignment/alignment.md
@@ -243,3 +243,33 @@ material:
     VetDesk support. Partner API documentation in Drive (Lumen / VetDesk / partner-api-v3.pdf)
   feeds:
   - 07-technical-solution-proposal
+- path: client/2026-10-09-vetdesk-reminders/README.md
+  topic: vetdesk-reminders
+  status: raw
+  added: 2026-10-08
+  added_by: franka
+  source: email from Tomislav Jurić to Iva Marić, dated 9 October 2026, reply on reminder
+    rules in VetDesk
+  feeds:
+  - 05-information-architecture
+  - 07-technical-solution-proposal
+- path: client/2026-10-13-language-and-messages/README.md
+  topic: language-and-messages
+  status: raw
+  added: 2026-10-08
+  added_by: franka
+  source: email from Marta Kos to Iva Marić and Luka, copied to Petra Novak, dated
+    13 October 2026, after Luka walked Lumen through the message options
+  feeds:
+  - 05-information-architecture
+  - 07-technical-solution-proposal
+- path: research/booking-pending-state/README.md
+  topic: booking-pending-state
+  status: raw
+  added: 2026-10-08
+  added_by: franka
+  source: DECODE team decision note, dated 14 October 2026, made by Luka and accepted
+    by the product manager, to confirm with Marta at the next review
+  feeds:
+  - 05-information-architecture
+  - 10-development-ready-prototype

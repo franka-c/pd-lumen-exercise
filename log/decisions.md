@@ -176,3 +176,119 @@ it.
 Jurić to Iva Marić, 8 October 2026. Closes Q-001.
 
 **Supersedes.** None.
+
+## D-014
+
+**Decision.** The app shows the reminders VetDesk returns as due for each pet, and
+calculates none itself.
+
+**Why.** The reminder rules live in VetDesk and the partner API does not expose them.
+It returns the result instead: for each pet, the reminders that are due, with the
+type, the due date and the clinic, on a read-only endpoint. This is how D-006 works
+in practice.
+
+**Source.** `client/2026-10-09-vetdesk-reminders/email.md`, email from Tomislav Jurić
+to Iva Marić, dated 9 October 2026. Closes Q-002.
+
+**Supersedes.** None.
+
+## D-015
+
+**Decision.** Reminder rules are managed only in VetDesk, by reception. Neither the
+app nor the reception web view edits them.
+
+**Why.** Reception sets the rules per species and per vaccine in VetDesk, and the app
+picks up a change on its next read.
+
+**Source.** `client/2026-10-09-vetdesk-reminders/email.md`, email from Tomislav Jurić
+to Iva Marić, dated 9 October 2026.
+
+**Supersedes.** None.
+
+## D-016
+
+**Decision.** Lumen launches in Croatian only. Slovenian comes in the release after.
+
+**Why.** Marta ties Slovenian to the Ljubljana clinic being on VetDesk. Whether a
+clinic is not on VetDesk yet is Q-007.
+
+**Source.** `client/2026-10-13-language-and-messages/email.md`, email from Marta Kos,
+dated 13 October 2026. Closes Q-003.
+
+**Supersedes.** None.
+
+## D-017
+
+**Decision.** Screens are designed so Slovenian text fits later without redesign.
+
+**Why.** Slovenian follows in the next release (D-016), and Lumen does not want the
+screens redone for it.
+
+**Source.** `client/2026-10-13-language-and-messages/email.md`, email from Marta Kos,
+dated 13 October 2026.
+
+**Supersedes.** None.
+
+## D-018
+
+**Decision.** Reception messages sit on Home in a "From your clinic" list, newest
+first, with no new tab. A message about a pet or an appointment links to it, and a
+push notification opens the message directly.
+
+**Why.** Luka walked Lumen through the options and Marta chose his second option.
+Petra agrees as long as owners still cannot reply (D-012).
+
+**Not decided here.** Where reception sends messages from on the reception web view.
+That is Q-008.
+
+**Source.** `client/2026-10-13-language-and-messages/email.md`, email from Marta Kos,
+dated 13 October 2026. Closes Q-004 for the owner app.
+
+**Supersedes.** None.
+
+## D-019
+
+**Decision.** While a booking waits for reception, the appointment card shows
+"Requested, waiting for the clinic", with the date, time and pet. The owner can cancel
+the request but not change it.
+
+**Why.** It answers the first half of Q-005: what the owner sees while the request is
+pending.
+
+**Source.** `research/booking-pending-state/notes.md`, team decision by Luka, dated 14
+October 2026. The note records it as accepted by Iva. To confirm with Marta at the next
+review.
+
+**Supersedes.** None.
+
+## D-020
+
+**Decision.** When reception rejects a request, the owner gets a push notification.
+The card shows "Not confirmed" with the reason reception picked, and "Pick another
+time" opens booking at the same clinic with the same pet selected.
+
+**Why.** It answers the second half of Q-005: what happens when reception rejects the
+request. The reason comes from the list D-005 gives reception.
+
+**Source.** `research/booking-pending-state/notes.md`, team decision by Luka, dated 14
+October 2026. The note records it as accepted by Iva. To confirm with Marta at the next
+review. With D-019, closes Q-005.
+
+**Supersedes.** None.
+
+## D-021
+
+**Decision.** A request reception has not answered in 24 hours stays pending, and the
+card adds "The clinic will call you". It is never cancelled automatically.
+
+**Why.** The note gives no reason beyond not cancelling a request the owner made.
+
+**Not decided here.** VetDesk confirms a pending write by itself after 15 minutes if
+the slot is still free (D-013). How a request can stay pending for 24 hours under that
+is Q-009.
+
+**Source.** `research/booking-pending-state/notes.md`, team decision by Luka, dated 14
+October 2026. The note records it as accepted by Iva. To confirm with Marta at the next
+review.
+
+**Supersedes.** None.
