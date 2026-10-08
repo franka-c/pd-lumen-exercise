@@ -4,8 +4,8 @@ counts:
   deliverables: 7
   confirmed: 5
   stale: 0
-  superseded_citations: 0
-  calls: 2
+  superseded_citations: 6
+  calls: 3
   material_raw: 0
 deliverables:
 - id: 01-project-alignment
@@ -100,7 +100,11 @@ deliverables:
   - D-005
   - D-006
   - D-008
-  superseded_citations: []
+  superseded_citations:
+  - cites: D-003
+    replaced_by: D-009
+  - cites: D-008
+    replaced_by: D-010
   reviewed: []
   figma: https://www.figma.com/file/EXERCISE/lumen-ia-board
   figma_checked: 2026-10-01
@@ -126,7 +130,11 @@ deliverables:
   - D-004
   - D-006
   - D-008
-  superseded_citations: []
+  superseded_citations:
+  - cites: D-003
+    replaced_by: D-009
+  - cites: D-008
+    replaced_by: D-010
   reviewed: []
   stale_upstream: []
 - id: 07-technical-solution-proposal
@@ -149,7 +157,9 @@ deliverables:
   - D-005
   - D-006
   - D-008
-  superseded_citations: []
+  superseded_citations:
+  - cites: D-008
+    replaced_by: D-010
   reviewed: []
   stale_upstream: []
 - id: 10-development-ready-prototype
@@ -171,7 +181,9 @@ deliverables:
   feeds: []
   decisions:
   - D-008
-  superseded_citations: []
+  superseded_citations:
+  - cites: D-008
+    replaced_by: D-010
   reviewed: []
   stale_upstream: []
 prototype:
@@ -211,3 +223,15 @@ material:
   - 01-project-alignment
   - 03-user-personas
   - 05-information-architecture
+- path: client/2026-10-08-ia-workshop/README.md
+  topic: ia-workshop
+  status: worked-in
+  added: 2026-10-08
+  added_by: paola
+  source: IA workshop with Marta Kos and Dr. Petra Novak, 8 October 2026, recording
+    in Drive (Lumen / Calls / ia-workshop.mp4)
+  feeds:
+  - 05-information-architecture
+  - 06-feature-prioritization
+  - 07-technical-solution-proposal
+  - 10-development-ready-prototype
