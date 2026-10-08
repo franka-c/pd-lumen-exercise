@@ -114,7 +114,15 @@
         const p = { ...pets[0], usual_vet_id: null };
         f = newForm({ pets: [p], petId: p.id, clinicId: p.usual_clinic_id, vetId: null }); break;
       }
+      case "book-vaccination-not-due": { const m = pets.find(x => x.id === "p-mica"); f = applyPetDefaults(newForm({ pets: [m], petId: m.id })); break; }
       default: f = applyPetDefaults(newForm({ pets: one, petId: one[0].id }));
+    }
+    // Entry from another feature: ?pet=<id>&type=<type>&clinic=<id>, for example F-04's "Rezerviraj".
+    if (s === "book" && params.get("pet")) {
+      const p = pets.find(x => x.id === params.get("pet"));
+      if (p) { f = applyPetDefaults(newForm({ pets: [p], petId: p.id })); }
+      if (params.get("clinic") && clinic(params.get("clinic"))) { f.clinicId = params.get("clinic"); if (vet(f.vetId)?.clinic_id !== f.clinicId) f.vetId = null; }
+      if (params.get("type") && clinic(f.clinicId).types.includes(params.get("type"))) f.type = params.get("type");
     }
     const firstFree = () => horizon().find(d => freeTimes(f, d).length);
     if (["book-loading-slots", "book-no-slots-day", "book-fully-booked", "book-slots-error", "book-ready", "book-sending", "book-slot-taken", "book-send-error", "dialog-discard"].includes(s)) f.type = "check-up";

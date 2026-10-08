@@ -20,6 +20,8 @@ body {
 }
 
 h1, h2, h3 { font-weight: var(--font-weight-heading); margin: 0; }
+a { color: var(--color-primary); }
+dd { overflow-wrap: anywhere; min-width: 0; }
 h1 { font-size: var(--text-2xl); line-height: var(--leading-2xl); }
 h2 { font-size: var(--text-lg); line-height: var(--leading-lg); }
 h3 { font-size: var(--text-base); line-height: var(--leading-base); }
@@ -296,3 +298,52 @@ p { margin: 0; }
 .devdoc th, .devdoc td { border: 1px solid #ccc; padding: 4px 6px; text-align: left; vertical-align: top; }
 .devdoc .unconf { color: #b00; font-weight: bold; }
 @media (min-width: 768px) { .devdoc { max-width: 900px; margin: var(--space-4) auto; } }
+
+/* ---------- Reception web view (F-10): desktop layout ---------- */
+.desk { min-height: 100vh; background: var(--color-background); display: flex; flex-direction: column; }
+.desk-header { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); padding: var(--space-3) var(--space-6); border-bottom: var(--border-width) solid var(--color-border); }
+.desk-header h1 { font-size: var(--text-lg); line-height: var(--leading-lg); }
+.desk-nav { display: flex; gap: var(--space-1); padding: var(--space-3) var(--space-6) 0; border-bottom: var(--border-width) solid var(--color-border); }
+.desk-nav .tab { flex: none; border-radius: var(--radius-sm) var(--radius-sm) 0 0; padding: var(--space-2) var(--space-4); display: inline-flex; gap: var(--space-2); align-items: center; }
+.desk-nav .tab[aria-selected="true"] { box-shadow: none; background: var(--color-muted); color: var(--color-foreground); }
+.count { font-size: var(--text-xs); line-height: var(--leading-xs); background: var(--color-primary); color: var(--color-primary-foreground); border-radius: var(--radius-full); padding: 0 var(--space-2); }
+.desk-body { flex: 1; display: grid; grid-template-columns: minmax(0, 1fr) 400px; min-height: 0; }
+.desk-body.no-detail { grid-template-columns: minmax(0, 1fr); }
+.desk-list { padding: var(--space-4) var(--space-6); display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; }
+.desk-list h2 { font-size: var(--text-sm); line-height: var(--leading-sm); color: var(--color-muted-foreground); margin-top: var(--space-4); }
+.row {
+  display: grid; grid-template-columns: 110px minmax(0, 1.2fr) minmax(0, 1.4fr) 140px; gap: var(--space-4); align-items: center;
+  width: 100%; text-align: left; font: inherit; font-size: var(--text-sm); line-height: var(--leading-sm); color: var(--color-foreground);
+  background: var(--color-card); border: var(--border-width) solid var(--color-border); border-radius: var(--radius); padding: var(--space-3) var(--space-4); cursor: pointer;
+}
+.row:focus-visible { outline: 2px solid var(--color-ring); outline-offset: 2px; }
+.row[aria-current="true"] { border-color: var(--color-primary); box-shadow: 0 0 0 1px var(--color-primary); }
+.row.is-auto { background: var(--color-muted); color: var(--color-muted-foreground); cursor: default; }
+.row .when { font-weight: var(--font-weight-heading); }
+.row .left { text-align: right; font-weight: var(--font-weight-medium); }
+.row-rx { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) 140px; }
+.desk-detail { border-left: var(--border-width) solid var(--color-border); padding: var(--space-4) var(--space-6); display: flex; flex-direction: column; gap: var(--space-4); overflow-wrap: anywhere; }
+.desk-detail dl { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: var(--space-2) var(--space-3); margin: 0; font-size: var(--text-sm); line-height: var(--leading-sm); }
+.desk-detail dt { color: var(--color-muted-foreground); }
+.desk-detail dd { margin: 0; }
+.desk-detail .actions { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+.input { font: inherit; font-size: var(--text-sm); min-height: var(--control-height); padding: var(--space-2) var(--space-3); border: var(--border-width) solid var(--color-input); border-radius: var(--radius); background: var(--color-background); color: var(--color-foreground); width: 100%; }
+.input:focus-visible { outline: 2px solid var(--color-ring); outline-offset: 2px; }
+textarea.input { min-height: 80px; resize: vertical; }
+.role-tag { font-size: var(--text-sm); color: var(--color-muted-foreground); text-align: right; }
+@media (max-width: 1023px) {
+  .desk-body { grid-template-columns: minmax(0, 1fr); }
+  .desk-detail { position: fixed; inset: 0; z-index: 15; background: var(--color-background); border-left: 0; overflow: auto; }
+  .row { grid-template-columns: 100px minmax(0, 1fr) 110px; }
+  .row .col-who { display: none; }
+}
+
+/* Prototype panel sits bottom right on the reception view, clear of the signed-in user */
+body:has(.desk-header) .proto-panel { top: auto; bottom: var(--space-3); }
+
+/* Bottom navigation of the owner app (D-010): four tabs share the width and wrap at large text */
+nav.footer .tab { min-width: 0; overflow-wrap: anywhere; padding: var(--space-2) var(--space-1); }
+
+/* Email previews (F-07) use the full width, up to the 600 px email column */
+.app.is-email { max-width: none; border: 0; border-radius: 0; }
+@media (min-width: 768px) { body:has(.app.is-email) { padding: 0; } }

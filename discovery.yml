@@ -198,6 +198,14 @@ deliverables:
   - D-026
   - D-027
   - D-028
+  - D-029
+  - D-030
+  - D-031
+  - D-032
+  - D-033
+  - D-034
+  - D-035
+  - D-036
   superseded_citations: []
   reviewed: []
   stale_upstream: []
@@ -210,6 +218,50 @@ prototype:
   - 06-feature-prioritization
   - 07-technical-solution-proposal
   rules_pages:
+  - path: prototype/rules/f-01-sign-in.md
+    feature: f-01-sign-in
+    status: draft
+    covers:
+    - states
+    - long-text
+    - data-shape
+    - interaction
+    - breakpoints
+    changed: '2026-10-08'
+    reconciled: '2026-10-08'
+  - path: prototype/rules/f-02-pets.md
+    feature: f-02-pets
+    status: draft
+    covers:
+    - states
+    - long-text
+    - data-shape
+    - interaction
+    - breakpoints
+    changed: '2026-10-08'
+    reconciled: '2026-10-08'
+  - path: prototype/rules/f-03-record.md
+    feature: f-03-record
+    status: draft
+    covers:
+    - states
+    - long-text
+    - data-shape
+    - interaction
+    - breakpoints
+    changed: '2026-10-08'
+    reconciled: '2026-10-08'
+  - path: prototype/rules/f-04-vaccinations.md
+    feature: f-04-vaccinations
+    status: draft
+    covers:
+    - states
+    - long-text
+    - data-shape
+    - interaction
+    - breakpoints
+    changed: '2026-10-08'
+    reconciled: '2026-10-08'
   - path: prototype/rules/f-05-booking.md
     feature: f-05-booking
     status: draft
@@ -223,6 +275,50 @@ prototype:
     reconciled: '2026-10-08'
   - path: prototype/rules/f-06-move-cancel.md
     feature: f-06-move-cancel
+    status: draft
+    covers:
+    - states
+    - long-text
+    - data-shape
+    - interaction
+    - breakpoints
+    changed: '2026-10-08'
+    reconciled: '2026-10-08'
+  - path: prototype/rules/f-07-home.md
+    feature: f-07-home
+    status: draft
+    covers:
+    - states
+    - long-text
+    - data-shape
+    - interaction
+    - breakpoints
+    changed: '2026-10-08'
+    reconciled: '2026-10-08'
+  - path: prototype/rules/f-08-f-09-prescriptions.md
+    feature: f-08-f-09-prescriptions
+    status: draft
+    covers:
+    - states
+    - long-text
+    - data-shape
+    - interaction
+    - breakpoints
+    changed: '2026-10-08'
+    reconciled: '2026-10-08'
+  - path: prototype/rules/f-10-reception.md
+    feature: f-10-reception
+    status: draft
+    covers:
+    - states
+    - long-text
+    - data-shape
+    - interaction
+    - breakpoints
+    changed: '2026-10-08'
+    reconciled: '2026-10-08'
+  - path: prototype/rules/f-13-messages.md
+    feature: f-13-messages
     status: draft
     covers:
     - states

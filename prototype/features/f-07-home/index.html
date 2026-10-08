@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>F-07 Početna i podsjetnici · Lumen prototip</title>
+  <link rel="stylesheet" href="../../tokens.css?v=1.0.0">
+  <link rel="stylesheet" href="../../shared.css?v=1.0.0">
+</head>
+<body>
+  <!-- F-07 Home and reminders by push and email. Rules, decisions and open items: prototype/rules/f-07-home.md -->
+  <div class="app" id="app"></div>
+  <div id="overlays"></div>
+  <div class="proto-panel" id="proto-panel"></div>
+
+  <details class="devdoc" id="devdoc">
+    <summary>[Prototip] Za developere: ugovor podataka, pravila, tekstovi (EN)</summary>
+    <p>Rules page: <code>prototype/rules/f-07-home.md</code>. Every state: <code>?state=&lt;id&gt;</code>. <code>?long=1</code>, <code>?text=200</code>. Mock "today" is 20 Oct 2026.</p>
+    <h3>Reminder schedule (D-034)</h3>
+    <table>
+      <tr><th>Reminder</th><th>When</th><th>Channel</th><th>Stops when</th></tr>
+      <tr><td>Vaccination due</td><td><span class="unconf">14 days before the due date (needs future dates, Q-019)</span>, and on the due date</td><td>push and email</td><td>a vaccination appointment is requested or confirmed; the pet has died (D-031). No reminder after the due date</td></tr>
+      <tr><td>Booked appointment</td><td>push the day before at 18:00; <span class="unconf">email the same day at 07:00, UNCONFIRMED</span></td><td>push and email</td><td>the appointment is cancelled. <span class="unconf">Outside the IA: Marta to confirm (Q-020)</span></td></tr>
+    </table>
+    <ul>
+      <li class="unconf">Quiet hours: no push between 21:00 and 08:00; held until 08:00. UNCONFIRMED (Q-020).</li>
+      <li>Pet names are never declined in texts ("Rex: …"), because the app cannot decline every name correctly.</li>
+    </ul>
+    <h3>Home, top to bottom</h3>
+    <ul>
+      <li>"Dobar dan, &lt;first name&gt;".</li>
+      <li>Next appointment: date, time, pet, type, clinic, vet; one action: "Promijeni ili otkaži" (F-06), or "Pogledaj" when requested (F-05).</li>
+      <li>One card per due item, overdue first and calm (D-033), action "Rezerviraj" (F-05 with pet, type and clinic).</li>
+      <li>"Od vaše klinike" (F-13) and the renewal card (F-09), not built yet.</li>
+      <li>Nothing at all: "Nema ništa novo…" with "Rezerviraj termin".</li>
+      <li>Tapping a push opens Home on that card.</li>
+    </ul>
+    <h3>Email</h3>
+    <ul>
+      <li>Subject, the reminder, "Otvori u aplikaciji" and the clinic's phone, then "Primate ovu poruku jer ste klijent klinike Lumen."</li>
+      <li class="unconf">No unsubscribe link while F-11 is out of scope: Marta to check against GDPR (Q-020).</li>
+    </ul>
+  </details>
+
+  <script src="data.js?v=1.0.0"></script>
+  <script src="home.js?v=1.0.0"></script>
+</body>
+</html>

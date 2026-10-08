@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>F-04 Cijepljenja · Lumen prototip</title>
+  <link rel="stylesheet" href="../../tokens.css?v=1.0.0">
+  <link rel="stylesheet" href="../../shared.css?v=1.0.0">
+</head>
+<body>
+  <!-- F-04 Vaccinations and due dates. Rules, decisions and open items: prototype/rules/f-04-vaccinations.md -->
+  <div class="app" id="app"></div>
+  <div id="overlays"></div>
+  <div class="proto-panel" id="proto-panel"></div>
+
+  <details class="devdoc" id="devdoc">
+    <summary>[Prototip] Za developere: ugovor podataka, pravila, tekstovi (EN)</summary>
+    <p>Rules page: <code>prototype/rules/f-04-vaccinations.md</code>. Every state: <code>?state=&lt;id&gt;</code>. <code>?long=1</code>, <code>?text=200</code>. Mock "today" is 20 Oct 2026.</p>
+    <h3>due (read from VetDesk, D-014)</h3>
+    <table>
+      <tr><th>Field</th><th>Type</th><th>Required</th><th>Nullable</th><th>Notes</th></tr>
+      <tr><td>type</td><td>string</td><td>yes</td><td>no</td><td>as VetDesk names it; wraps in full</td></tr>
+      <tr><td>due_date</td><td>date</td><td>yes</td><td>no</td><td>before today: "Dospjelo 3. rujna", first; otherwise "Dospijeva …". <span class="unconf">Whether VetDesk returns future dates or only what is due now: UNCONFIRMED (Q-019)</span></td></tr>
+      <tr><td>clinic_id</td><td>string</td><td>yes</td><td>no</td><td>passed to F-05 as the booking clinic</td></tr>
+    </table>
+    <h3>history (read from VetDesk, D-013)</h3>
+    <table><tr><th>Field</th><th>Type</th><th>Notes</th></tr><tr><td>name, date, vet_id, clinic_id</td><td>string, date</td><td>newest first</td></tr></table>
+    <h3>Interaction rules</h3>
+    <ul>
+      <li>"Dospijeva": everything VetDesk returns, sorted by date, so overdue comes first. Calm and neutral, no red, no warning (D-033). No "soon" window is calculated (D-014).</li>
+      <li>"Rezerviraj" opens F-05 with the pet, type Cijepljenje and the item's clinic: <code>../f-05-booking/index.html?state=book&amp;pet=&lt;id&gt;&amp;type=vaccination&amp;clinic=&lt;id&gt;</code>.</li>
+      <li>If the pet already has a requested or confirmed vaccination appointment in the future, each due item shows "Termin rezerviran: …" instead of the button.</li>
+      <li>Nothing due: "Nema dospjelih cijepljenja." No history: "Još nema cijepljenja u kartonu."</li>
+      <li>Deceased pet: history only (D-031). VetDesk not answering: last saved data with a notice, as F-02.</li>
+    </ul>
+    <h3>Open</h3>
+    <ul><li class="unconf">Q-019: does VetDesk return only what is due now, or also the next dates ahead? F-05's vaccination warning needs the next date.</li></ul>
+  </details>
+
+  <script src="data.js?v=1.0.0"></script>
+  <script src="vaccinations.js?v=1.0.0"></script>
+</body>
+</html>

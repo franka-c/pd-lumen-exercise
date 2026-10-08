@@ -416,3 +416,186 @@ Q-014.
 8 October 2026, decided by Antonija (design). To confirm with Marta at the next review.
 
 **Supersedes.** None.
+
+## D-029
+
+**Decision.** F-10, the reception web view, behaves as follows:
+
+- Reception and vets use the same web view, each with their own sign-in. Vets see
+  only prescription requests.
+- "Odobri" on an appointment request, move or cancellation confirms it at once, and
+  the owner gets a push notification.
+- A request reception does not answer within 15 minutes is confirmed by VetDesk and
+  stays in the list, grey, marked "Potvrđeno automatski", until reception removes it.
+- The vet sets the pickup date when approving a repeat prescription. The default is
+  today, and it cannot be in the past.
+
+**Why.** The IA gives each request approve and reject, and D-004 has a vet approve
+every prescription, but neither says how the vet reaches it, what approve means when
+VetDesk confirms by itself after 15 minutes, or who sets the pickup date the owner
+sees. Own sign-ins show who approved a medicine. Approving at once spares the owner a
+wait for a decision already made.
+
+**Not decided here.** Whether our backend can confirm a pending VetDesk write early is
+part of Q-013. Sign-in and accounts are Q-015.
+
+**Source.** `prototype/rules/f-10-reception.md`, prototype design session for F-10,
+8 October 2026, decided by Antonija (design). To confirm with Marta and Petra at the
+next review.
+
+**Supersedes.** None.
+
+## D-030
+
+**Decision.** F-01, owner sign-in, works as follows:
+
+- The invitation link opens the app, and the owner sets a password. Afterwards they
+  sign in with their email address or phone number and the password.
+- A forgotten password is reset by a link to the email address or a code by SMS to
+  the phone number, whichever the owner signs in with.
+- An owner without an invitation can request one in the app with an email address or
+  phone number. The reply is always the same, so the app never reveals who is a
+  client.
+- One account per person, across clinics.
+
+**Why.** 06 has the clinic invite owners by email or SMS from the VetDesk owner
+record, but nothing says how they sign in afterwards. A password is familiar to
+owners. Signing in with a phone number keeps owners with no email address in the
+app (A-2).
+
+**Not decided here.** The password rule, how long an invitation and a password link
+are valid, and the attempt limit are Q-016.
+
+**Source.** `prototype/rules/f-01-sign-in.md`, prototype design session for F-01, 8
+October 2026, decided by Antonija (design). To confirm with Marta at the next review.
+
+**Supersedes.** None.
+
+## D-031
+
+**Decision.** F-02, my pets, works as follows:
+
+- A pet VetDesk marks as having died moves to a separate "Preminuli" section at the
+  end of the list. It has no booking, reminders, prescriptions or notifications, and
+  its record is read only.
+- The owner can add a photo of each pet from the camera or gallery. Until then the
+  pet's first letter shows. The photo is held by the app, not VetDesk.
+
+**Why.** Nothing in the IA covers pets that have died, and showing one as alive would
+send reminders for it. The brand guidelines ask for real photos of pets, and VetDesk
+is not known to hold any.
+
+**Not decided here.** Whether VetDesk marks a pet that has died, how photos are
+stored, and whether "Preminuli" is the right word are Q-017.
+
+**Source.** `prototype/rules/f-02-pets.md`, prototype design session for F-02, 8
+October 2026, decided by Antonija (design). To confirm with Marta and Petra at the
+next review.
+
+**Supersedes.** None.
+
+## D-032
+
+**Decision.** In F-03, the pet's record, the owner sees only the consultation notes and
+documents the vet marked as visible to the owner. A consultation with nothing marked
+shows its date, type and vet, and says the notes are not available in the app.
+
+**Why.** The IA says "notes as released by the vet". Applying the same marker to
+documents means an owner never reads a lab result before the vet can explain it.
+Reception announces results with a message (F-13).
+
+**Not decided here.** Whether VetDesk has such a marker and returns it is Q-018.
+
+**Source.** `prototype/rules/f-03-record.md`, prototype design session for F-03, 8
+October 2026, decided by Antonija (design). To confirm with Marta and Petra at the
+next review.
+
+**Supersedes.** None.
+
+## D-033
+
+**Decision.** In F-04, vaccinations, an overdue vaccination is listed first, with
+"Dospjelo" and its date in the normal text colour, and a booking button. No red, no
+warning.
+
+**Why.** The brand's tone is calm, with no exclamation marks, and the owner should
+not feel scolded. Listing it first keeps it from being missed.
+
+**Source.** `prototype/rules/f-04-vaccinations.md`, prototype design session for F-04,
+8 October 2026, decided by Antonija (design). To confirm with Petra at the next
+review.
+
+**Supersedes.** None.
+
+## D-034
+
+**Decision.** F-07 sends reminders as follows, by push notification and email:
+
+- A vaccination VetDesk returns as due: 14 days before the due date, and again on the
+  due date if nothing is booked. No reminder once a vaccination appointment is
+  requested or confirmed, and none after the due date.
+- A booked appointment: a push the day before at 18:00 and an email on the morning of
+  the appointment.
+
+**Why.** D-006 sets the channels and D-014 the source, but not when reminders go out.
+Fourteen days leaves time to book. Stopping once booked avoids nagging. Appointment
+reminders cut missed appointments, and the email reaches owners who do not open the
+app.
+
+**Not decided here.** Appointment reminders go beyond the IA, which names only due
+items, so Marta confirms them. Quiet hours, the email time and an unsubscribe link
+are Q-020. The 14-day reminder needs future due dates from VetDesk (Q-019).
+
+**Source.** `prototype/rules/f-07-home.md`, prototype design session for F-07, 8
+October 2026, decided by Antonija (design). To confirm with Marta at the next review.
+
+**Supersedes.** None.
+
+## D-035
+
+**Decision.** In F-08 and F-09, repeat prescriptions:
+
+- The owner can request a renewal from 7 days before the prescription's next eligible
+  date. Before that the button is disabled and says from when.
+- The owner can add a one-way note to the vet, up to 300 characters. The vet sees it
+  in F-10 and cannot reply to it.
+
+**Why.** The IA gives a next eligible date but not whether it limits requests. A week
+ahead means an owner of a diabetic or epileptic pet never runs out while waiting for
+approval, without stockpiling. The note lets the vet learn what changed, without the
+owner-to-vet chat D-006 rules out.
+
+**Not decided here.** Where the next eligible date comes from, the 7 days and whether
+the note is acceptable are Q-021.
+
+**Source.** `prototype/rules/f-08-f-09-prescriptions.md`, prototype design session for
+F-08 and F-09, 8 October 2026, decided by Antonija (design). To confirm with Petra at
+the next review.
+
+**Supersedes.** None.
+
+## D-036
+
+**Decision.** F-13, reception messages, works as follows:
+
+- Reception picks the owner by searching name, pet or phone in the Messages list, or
+  sends from a request's detail in F-10 with owner and pet chosen.
+- Reception sees each message's status: sent, and read with the time. A message
+  unread after 24 hours suggests a call.
+- An owner without the app gets the message by email, if the clinic has one.
+  Reception sees "Šalje se e-mailom" before sending, and there is no read status. An
+  owner with neither cannot be messaged, and reception is told to call.
+
+**Why.** D-011, D-018 and D-025 set the channel, the place and the list, but not how
+reception picks a recipient or whether it knows a message arrived. Reading status
+tells Sanja when to call after all. Email keeps the message from vanishing for owners
+who never activate the app.
+
+**Not decided here.** Email extends D-011, so Marta confirms it. The two extra
+templates, the 500-character limit, the 24 hours and read receipts in the privacy
+notice are Q-022.
+
+**Source.** `prototype/rules/f-13-messages.md`, prototype design session for F-13, 8
+October 2026, decided by Antonija (design). To confirm with Marta at the next review.
+
+**Supersedes.** None.

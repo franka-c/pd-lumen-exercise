@@ -59,7 +59,7 @@ Petra).
 | Time just taken | VetDesk rejected the write | `book-slot-taken` |
 | Send failed, with retry | network or server error | `book-send-error` |
 | Emergency notice with call button | type is Hitni slučaj | `book-emergency` |
-| Vaccination warning, next due date | type is Cijepljenje and nothing is due | `book-vaccination-not-due` |
+| Vaccination warning, next due date (Mica) | type is Cijepljenje and nothing is due | `book-vaccination-not-due` |
 | Discard confirmation | closing after a time is chosen | `dialog-discard` |
 | Pick another time, prefilled | from a Not confirmed card | `pick-another` |
 
