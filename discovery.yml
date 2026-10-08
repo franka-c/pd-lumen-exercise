@@ -4,9 +4,9 @@ counts:
   deliverables: 7
   confirmed: 4
   stale: 0
-  superseded_citations: 0
-  calls: 3
-  material_raw: 4
+  superseded_citations: 1
+  calls: 4
+  material_raw: 5
 deliverables:
 - id: 01-project-alignment
   path: deliverables/01-project-alignment/alignment.md
@@ -110,7 +110,9 @@ deliverables:
   - D-019
   - D-020
   - D-021
-  superseded_citations: []
+  superseded_citations:
+  - cites: D-021
+    replaced_by: D-024
   reviewed: []
   figma: https://www.figma.com/file/EXERCISE/lumen-ia-board
   figma_checked: 2026-10-01
@@ -271,6 +273,17 @@ material:
   feeds:
   - 05-information-architecture
   - 07-technical-solution-proposal
+- path: client/2026-10-15-ia-review/README.md
+  topic: ia-review
+  status: raw
+  added: 2026-10-08
+  added_by: franka
+  source: IA review call with Lumen, 15 October 2026, with Marta, Petra and Tomislav.
+    Excerpts only, quoted from the candidate table drafted from the transcript
+  feeds:
+  - 05-information-architecture
+  - 07-technical-solution-proposal
+  - 10-development-ready-prototype
 - path: research/booking-pending-state/README.md
   topic: booking-pending-state
   status: raw
