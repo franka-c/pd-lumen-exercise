@@ -5,6 +5,7 @@ window.MOCK = {
   owner: { first_name: "Ivana", email: "ivana.kovac@example.com" },
   clinics: { "c-tresnjevka": { name: "Lumen Trešnjevka", phone: "01 234 5678" }, "c-maksimir": { name: "Lumen Maksimir", phone: "01 345 6789" } },  // phones: MOCK
   vets: { "v-horvat": "dr. Ivana Horvat", "v-peric": "dr. Maja Perić" },
+  pets: [{ id: "p-rex", name: "Rex", needs: true }, { id: "p-mica", name: "Mica", needs: true }],
   nextAppointment: { pet: "Rex", type: "Pregled", slot_start: "2026-10-22T10:30:00+02:00", clinic_id: "c-tresnjevka", vet_id: "v-horvat", status: "confirmed" },
   // What VetDesk returns as due (D-014), per pet.
   due: [

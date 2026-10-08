@@ -347,3 +347,26 @@ nav.footer .tab { min-width: 0; overflow-wrap: anywhere; padding: var(--space-2)
 /* Email previews (F-07) use the full width, up to the 600 px email column */
 .app.is-email { max-width: none; border: 0; border-radius: 0; }
 @media (min-width: 768px) { body:has(.app.is-email) { padding: 0; } }
+
+/* ---------- F-07 Home, "Ljubimci na vrhu" (shared by the feature page and the connected prototype) ---------- */
+.pets-row { display: flex; gap: var(--space-4); overflow-x: auto; padding: var(--space-1) var(--space-1) var(--space-2); margin: 0 calc(-1 * var(--space-1)); scroll-snap-type: x proximity; }
+.pet-chip { flex: none; display: flex; flex-direction: column; align-items: center; gap: var(--space-1); background: none; border: 0; padding: 0; font: inherit; font-size: var(--text-sm); line-height: var(--leading-sm); color: var(--color-muted-foreground); cursor: pointer; scroll-snap-align: start; max-width: 80px; }
+.pet-chip > span:last-child { overflow-wrap: anywhere; text-align: center; }
+.pet-chip[aria-selected="true"] { color: var(--color-foreground); font-weight: var(--font-weight-heading); }
+.pet-chip:focus-visible { outline: 2px solid var(--color-ring); outline-offset: 4px; border-radius: var(--radius); }
+.pet-avatar { display: flex; align-items: center; justify-content: center; border-radius: var(--radius-full); background: var(--color-secondary); color: var(--color-secondary-foreground); font-weight: var(--font-weight-heading); font-size: var(--text-lg); flex: none; }
+.pet-avatar.is-all { background: var(--color-muted); color: var(--color-foreground); font-size: var(--text-sm); }
+/* Ring = this pet needs something (due, renewal, not confirmed) */
+.pet-avatar.has-ring { box-shadow: 0 0 0 3px var(--color-background), 0 0 0 5px var(--color-primary); }
+.pet-chip[aria-selected="true"] .pet-avatar:not(.has-ring) { box-shadow: 0 0 0 3px var(--color-background), 0 0 0 5px var(--color-foreground); }
+
+.hero { background: var(--color-primary); color: var(--color-primary-foreground); border-radius: var(--radius); padding: var(--space-5); display: flex; flex-direction: column; gap: var(--space-2); box-shadow: var(--shadow-sm); }
+.hero-count { font-size: var(--text-xs); line-height: var(--leading-xs); font-weight: var(--font-weight-heading); letter-spacing: 0.08em; }
+.hero-date { font-size: var(--text-2xl); line-height: var(--leading-2xl); font-weight: var(--font-weight-heading); overflow-wrap: anywhere; }
+.hero-empty { background: var(--color-secondary); color: var(--color-secondary-foreground); }
+.hero-badge { background: var(--color-background); color: var(--color-foreground); white-space: normal; }
+.btn-on-primary { background: var(--color-background); color: var(--color-primary); border-color: var(--color-background); }
+.hero-empty .btn-on-primary { background: var(--color-primary); color: var(--color-primary-foreground); border-color: var(--color-primary); }
+.section-title { font-size: var(--text-base); line-height: var(--leading-base); display: flex; align-items: center; gap: var(--space-2); }
+.flow-spec { align-self: flex-start; }
+
