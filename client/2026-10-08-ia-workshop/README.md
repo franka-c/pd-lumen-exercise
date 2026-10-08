@@ -10,7 +10,8 @@ feeds: [05-information-architecture, 06-feature-prioritization, 07-technical-sol
 
 Fictional client, created for an internal DECODE exercise.
 
-Condensed transcript of the IA workshop. The recording stays in Drive (Lumen /
+Condensed transcript of the IA workshop. The workshop took place on 8 October 2026.
+The transcript's "Date" line is the exercise template's placeholder, kept as received. The recording stays in Drive (Lumen /
 Calls / ia-workshop.mp4, 38 minutes). Worked into
 `log/calls/2026-10-08-ia-workshop.md`
 and the decisions D-009 to D-012, and Q-004.

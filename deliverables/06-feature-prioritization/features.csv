@@ -6,9 +6,9 @@ F-04,See vaccinations and due dates,My pets,5,2,3,5,MVP,D-006
 F-05,Book an appointment with usual vet and clinic,Appointments,5,4,5,1,MVP,D-002. Score low on Q-001 but MVP by decision
 F-06,Move or cancel an appointment,Appointments,5,3,5,2,MVP,Moved to MVP by Marta on 2026-10-03
 F-07,Reminders by push and email,Home,5,3,2,5,MVP,D-006
-F-08,See active repeat prescriptions,Prescriptions,4,2,3,3,MVP,D-003
-F-09,Request a repeat prescription renewal,Prescriptions,5,3,3,4,MVP,D-004 approval rule
+F-08,See active repeat prescriptions,My pets,4,2,3,3,MVP,D-009
+F-09,Request a repeat prescription renewal,My pets,5,3,3,4,MVP,D-004 approval rule. D-009
 F-10,Reception request queue with approve and reject,Reception,5,3,2,5,MVP,D-005
 F-11,Notification preferences,Account,2,1,1,2,Future,
 F-12,Add a pet (request to clinic),My pets,2,2,2,0,Future,
-F-13,Reception messages an owner,Reception,3,3,2,1,Future,Parked at kickoff
+F-13,Reception messages an owner,Reception,3,3,2,1,Future,Unparked by D-011 on 2026-10-08. Re-score open

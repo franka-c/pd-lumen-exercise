@@ -6,7 +6,10 @@ owner: architect
 updated: 2026-10-03
 depends_on: [05-information-architecture, 06-feature-prioritization]
 feeds: [10-development-ready-prototype]
-decisions: [D-002, D-004, D-005, D-006, D-008]
+decisions: [D-002, D-004, D-005, D-006, D-010]
+reviewed:
+  05-information-architecture: "2026-10-08 citation moved to D-010. Integration designs unchanged. The message flow and push for D-011 are not designed yet, the architect's to add"
+  06-feature-prioritization: "2026-10-08 module moves and F-13 re-score do not change the integration or the stack"
 ---
 
 # Technical solution proposal
