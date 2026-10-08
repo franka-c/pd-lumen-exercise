@@ -6,7 +6,7 @@ counts:
   stale: 0
   superseded_citations: 0
   calls: 3
-  material_raw: 0
+  material_raw: 1
 deliverables:
 - id: 01-project-alignment
   path: deliverables/01-project-alignment/alignment.md
@@ -236,7 +236,7 @@ material:
   - 10-development-ready-prototype
 - path: client/2026-10-08-vetdesk-api-answer/README.md
   topic: vetdesk-api-answer
-  status: worked-in
+  status: raw
   added: 2026-10-08
   added_by: stella
   source: email from Tomislav Jurić to Iva Marić, 8 October 2026, after his call with

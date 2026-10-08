@@ -157,13 +157,20 @@ Petra's veto.
 ## D-013
 
 **Decision.** VetDesk accepts appointment writes through the partner API, so the
-technical proposal uses Design A. Prescriptions stay read-only in VetDesk, and the
-approval outcome is written back as a note on the record.
+technical proposal uses Design A. Prescriptions stay read-only in VetDesk, so the
+prescription approval flow stays on our side.
 
 **Why.** VetDesk support confirmed to Tomislav that the partner API creates and
 updates appointments under a key issued per practice group, and that Lumen qualifies
 as one group. The same call confirmed that prescriptions can only be read, so the
-approval flow D-004 requires stays on our side.
+approval flow D-004 requires cannot live in VetDesk.
+
+**Not decided here.** Tomislav's email says the approval outcome "has to" be written
+back as a note on the record. That is the requirement we have, not a capability
+VetDesk confirmed. Whether the partner API writes notes is Q-006. The rate limit of
+60 requests per minute for one key across all 14 clinics, against 07's two-minute
+availability rule, is open as well. It is R-2 in the 01 risk register and Iva sizes
+it.
 
 **Source.** `client/2026-10-08-vetdesk-api-answer/email.md`, email from Tomislav
 Jurić to Iva Marić, 8 October 2026. Closes Q-001.
