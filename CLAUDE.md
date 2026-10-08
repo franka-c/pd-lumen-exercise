@@ -60,8 +60,9 @@ against the playbook chapter.
   make them and bump `updated`. If it is still correct, add a `reviewed` line with
   a date and a reason and leave `updated` alone. Bumping `updated` to make a flag
   go away flags everything downstream for a change that did not happen.
-- **A change under `prototype/features/` ships with its `prototype/rules/` page.**
-  CI fails the pull request otherwise.
+- **Every feature under `prototype/features/` gets a `prototype/rules/` page.** A
+  feature can start without one, and CI warns until it has one. Write it before the
+  feature goes to the client.
 - **Hands-on prototypes live in `handson/`, stay rough, and are never promoted.**
   What they settle goes into `log/decisions.md` and is rebuilt properly in
   `prototype/`.
