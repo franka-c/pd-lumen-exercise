@@ -26,10 +26,11 @@ Future from 0 to 3, Discard below 0 unless a decision overrides.
 
 ## Result
 
-Thirteen features. Nine MVP, three Future, one Discard. The three Future items all
-depend on Q-001 or on reception messaging, which was parked at the time. Marta
-confirmed the split on 3 October with one change: rescheduling moved from Future to
-MVP because moving appointments is most of reception's phone load.
+Thirteen features. Marta confirmed the split on 3 October with one change:
+rescheduling (F-06) moved from Future to MVP because moving appointments is most of
+reception's phone load. That left ten MVP and three Future, with no Discard. The
+three Future items were notification preferences, adding a pet, and reception
+messaging, which was parked at the time.
 
 ## After the IA workshop, 8 October
 
@@ -39,4 +40,4 @@ MVP because moving appointments is most of reception's phone load.
   F-13, reception messages an owner, moves from Future to MVP by decision. Its score
   of 1 stays as set while messaging was parked, the same way F-05 is MVP by
   decision. Owners cannot reply (D-012).
-- The split is now eleven MVP and two Future.
+- The split is now eleven MVP and two Future, with no Discard, per `features.csv`.
