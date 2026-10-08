@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>F-05 Rezervacija termina · Lumen prototip</title>
+  <link rel="stylesheet" href="../../tokens.css?v=0.1.0">
+  <link rel="stylesheet" href="../../shared.css?v=0.1.0">
+</head>
+<body>
+  <!-- F-05 Book an appointment with usual vet and clinic.
+       Rules, decisions and open items: prototype/rules/f-05-booking.md -->
+  <div class="app" id="app"></div>
+  <div id="overlays"></div>
+  <div class="proto-panel" id="proto-panel"></div>
+
+  <details class="devdoc" id="devdoc">
+    <summary>[Prototip] Za developere: ugovor podataka, pravila, tekstovi (EN)</summary>
+
+    <p>Rules page: <code>prototype/rules/f-05-booking.md</code>. Every state: <code>?state=&lt;id&gt;</code> (see the PROTOTIP panel). <code>?long=1</code> long content, <code>?text=200</code> 200% text.</p>
+
+    <h3>booking</h3>
+    <table>
+      <tr><th>Field</th><th>Type</th><th>Required</th><th>Nullable</th><th>Values, format</th><th>Source</th></tr>
+      <tr><td>id</td><td>string</td><td>yes</td><td>no</td><td>VetDesk appointment id</td><td>D-013</td></tr>
+      <tr><td>pet_id</td><td>string</td><td>yes</td><td>no</td><td></td><td>D-002</td></tr>
+      <tr><td>clinic_id</td><td>string</td><td>yes</td><td>no</td><td>default: pet.usual_clinic_id</td><td>D-002, IA</td></tr>
+      <tr><td>vet_id</td><td>string</td><td>yes</td><td>no</td><td>default: pet.usual_vet_id; any vet at the clinic</td><td>D-002, D-027</td></tr>
+      <tr><td>appointment_type</td><td>enum</td><td>yes</td><td>no</td><td>check-up, vaccination, surgery, dental, emergency; limited to clinic.types; all bookable online</td><td>clinics.csv, D-027</td></tr>
+      <tr><td>slot_start</td><td>datetime</td><td>yes</td><td>no</td><td>ISO 8601 with offset, Europe/Zagreb. Start only is shown, no duration</td><td>spec proposal 4</td></tr>
+      <tr><td>status</td><td>enum</td><td>yes</td><td>no</td><td>requested, not_confirmed, confirmed, <span class="unconf">cancelled (proposal 1, owner cancelled a request)</span></td><td>D-019, D-020, D-024</td></tr>
+      <tr><td>created_at</td><td>datetime</td><td>yes</td><td>no</td><td>reception can reject until created_at + 15 min</td><td>D-024</td></tr>
+      <tr><td>reject_reason_code</td><td>enum</td><td>when not_confirmed</td><td>yes</td><td><span class="unconf">UNCONFIRMED placeholders: vet_unavailable, call_first, other (Q-010)</span></td><td>D-005, D-020</td></tr>
+      <tr><td>reject_reason_text</td><td>string</td><td>no</td><td>yes</td><td>reception's free text. 3 lines, then "Više"</td><td>D-005</td></tr>
+    </table>
+
+    <h3>Also read</h3>
+    <table>
+      <tr><th>Field</th><th>Type</th><th>Notes</th></tr>
+      <tr><td>pet.usual_clinic_id, pet.usual_vet_id</td><td>string, nullable</td><td>null vet: no preselection, owner picks</td></tr>
+      <tr><td>clinic.types</td><td>enum[]</td><td>the clinic's own list</td></tr>
+      <tr><td>clinic.phone</td><td>string</td><td><span class="unconf">new field, numbers here are MOCK. Source: VetDesk or Lumen's clinic list</span></td></tr>
+      <tr><td>free times</td><td>time[] per vet, type, day</td><td>4 weeks from today (designer decision). Read from VetDesk, no older than 2 minutes (07, R-2)</td></tr>
+      <tr><td>vaccination due</td><td>{due_now, next_due}</td><td>what VetDesk returns as due (D-014). next_due null: no warning</td></tr>
+    </table>
+
+    <h3>Interaction rules</h3>
+    <ul>
+      <li>Defaults: one pet is preselected; with several, none is. Clinic and vet default to the pet's usual ones (D-002).</li>
+      <li>Change pet: clinic and vet reset to that pet's usual ones; type, day, time cleared.</li>
+      <li>Change clinic: vet, type, day, time cleared. Change vet: time cleared. Change type: time cleared.</li>
+      <li>Send is disabled until pet, clinic, vet, type, day and time are all set. While sending it shows "Šaljem…" and cannot be pressed again.</li>
+      <li>Success: back to Termini, new card on top as Requested, toast "Zahtjev je poslan".</li>
+      <li>Time taken (VetDesk rejects the write): the time is cleared, times reload, everything else kept.</li>
+      <li>Send failed: error above the button, choices kept, button reads "Pokušaj ponovno".</li>
+      <li>Emergency: call notice with the clinic's phone above Send. The request can still be sent.</li>
+      <li>Vaccination with nothing due: warning with next due date. The request can still be sent.</li>
+      <li>Cancel request: confirmation sheet, not undoable. Card disappears, toast "Zahtjev je otkazan".</li>
+      <li>"Odaberi drugi termin": booking opens with the same pet and clinic (D-020) and the same vet and type (proposal 2).</li>
+      <li>Close after a time is chosen: "Odbaciti rezervaciju?" Before that, it just closes.</li>
+      <li>Push: on confirmation (designer decision) and on rejection (D-020). Tapping it opens Termini.</li>
+    </ul>
+
+    <h3>Copy (Croatian is an unconfirmed translation of the English agreed with Lumen)</h3>
+    <table>
+      <tr><th>HR (shown)</th><th>EN</th><th>Status</th></tr>
+      <tr><td>Zatraženo, čeka potvrdu klinike</td><td>Requested, waiting for the clinic</td><td>EN agreed (D-019), <span class="unconf">HR unconfirmed</span></td></tr>
+      <tr><td>Nije potvrđeno</td><td>Not confirmed</td><td>EN agreed (D-020), <span class="unconf">HR unconfirmed</span></td></tr>
+      <tr><td>Odaberi drugi termin</td><td>Pick another time</td><td>EN agreed (D-020), <span class="unconf">HR unconfirmed</span></td></tr>
+      <tr><td>Potvrđeno</td><td>Confirmed</td><td>EN agreed (D-024), <span class="unconf">HR unconfirmed</span></td></tr>
+      <tr><td>Termin je potvrđen</td><td>Your appointment is confirmed</td><td><span class="unconf">unconfirmed</span></td></tr>
+      <tr><td>Za hitne slučajeve nazovite kliniku</td><td>For an urgent case, call the clinic</td><td><span class="unconf">unconfirmed</span></td></tr>
+      <tr><td>Vaš veterinar</td><td>Your usual vet</td><td><span class="unconf">unconfirmed</span></td></tr>
+      <tr><td>Nema slobodnih termina u sljedeća 4 tjedna.</td><td>No free times in the next 4 weeks.</td><td><span class="unconf">unconfirmed</span></td></tr>
+      <tr><td>Odbaciti rezervaciju?</td><td>Discard this booking?</td><td><span class="unconf">unconfirmed</span></td></tr>
+      <tr><td>Zahtjev je otkazan</td><td>Request cancelled</td><td><span class="unconf">unconfirmed</span></td></tr>
+    </table>
+
+    <h3>Open</h3>
+    <ul>
+      <li class="unconf">Q-010: Lumen's list of rejection reasons.</li>
+      <li class="unconf">Q-011: Lumen to confirm the Croatian wording.</li>
+      <li class="unconf">Q-012: Primary button colour. Teal is used. The brand reserves Coral for calls to action, but white on Coral is about 3:1.</li>
+    </ul>
+  </details>
+
+  <script src="data.js?v=0.1.0"></script>
+  <script src="booking.js?v=0.1.0"></script>
+</body>
+</html>

@@ -14,3 +14,6 @@ Every question has an owner and names what it blocks. Closed questions move to
 | Q-007 | Is a Lumen clinic not on VetDesk yet? Marta ties Slovenian to "the Ljubljana clinic" being on VetDesk, and 01 says all 14 clinics run it. | Tomislav | 01, 07 | 2026-10-08 | open, raised by D-016 |
 | Q-008 | Where does reception send messages from on the reception web view: a third Messages list, or elsewhere? | Luka | 05 | 2026-10-08 | closed 2026-10-08 by D-025, a third Messages list |
 | Q-009 | How does a request that stays pending for 24 hours (D-021) fit VetDesk confirming a pending write by itself after 15 minutes (D-013)? | Iva | 07, 10 | 2026-10-08 | closed 2026-10-08 by D-024, reception has 15 minutes, then VetDesk confirms |
+| Q-010 | What reasons can reception pick when it rejects an appointment request (D-005)? The prototype uses three placeholders. | Marta | 10 | 2026-10-08 | open, raised by F-05 |
+| Q-011 | Does Lumen accept the Croatian wording in the prototype? Lumen agreed the booking strings in English (D-019, D-020). | Marta | 10 | 2026-10-08 | open, raised by F-05 |
+| Q-012 | Which colour is the main button: Coral, which the brand keeps for calls to action but fails contrast with white text (about 3:1), or Teal? | Luka | 10 | 2026-10-08 | open, the prototype uses Teal |

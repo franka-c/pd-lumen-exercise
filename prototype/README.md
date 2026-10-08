@@ -6,7 +6,7 @@ owner: designer
 updated: 2026-10-08
 depends_on: [01-project-alignment, 01-project-alignment-risks, 03-user-personas, 05-information-architecture, 06-feature-prioritization, 07-technical-solution-proposal]
 feeds: []
-decisions: [D-010]
+decisions: [D-010, D-026, D-027]
 ---
 
 # Development-ready prototype
@@ -25,7 +25,12 @@ at each client review.
 
 ## Status
 
-Design foundations in progress on the Figma board. No features built yet. Build
-was due to start the week of 5 October with F-05, booking. It waits on two things:
-the IA is back in review after the 8 October workshop (D-009 to D-012, Q-004), and
-booking depends on Q-001.
+Version 0.1.0. F-05, booking, is built and verified in the browser, with its rules page
+at `rules/f-05-booking.md`. Open `index.html` or serve this folder and open
+`features/f-05-booking/index.html`.
+
+Design system: the shadcn/ui kit for structure and Lumen's brand for colour, type and
+corners, snapshotted in `tokens.css` (D-007). Values the brand does not set are marked
+unconfirmed there.
+
+Next: F-06, moving or cancelling a confirmed appointment, which F-05 links to.

@@ -1,0 +1,79 @@
+/* Design system snapshot
+   Structure: shadcn/ui kit for Figma, Pro Blocks, June 2025
+     Figma file v9mpONXW2tQm9v0MKIhoWS, node 580:9181 (Documentation)
+     Collections read: "1. TailwindCSS", "2. Theme", "3. Mode" (Light)
+   Brand: Lumen brand guidelines, summarised in
+     client/2026-09-18-brand-and-clinics/brand-summary.md (PDF in Drive)
+   Read: 2026-10-08
+
+   shadcn gives the components, spacing, sizes and states. Lumen's brand replaces
+   shadcn's colour, typeface and corner radius where the guidelines set them (D-007).
+   Values the guidelines do not set are shadcn's defaults and are marked
+   UNCONFIRMED until the designer settles them.
+
+   Nothing here syncs. Re-read the source and bump the version when either moves. */
+
+:root {
+  /* Brand, from the Lumen guidelines */
+  --lumen-teal: #0F7C7A;          /* primary */
+  --lumen-sand: #F2E9DC;          /* secondary */
+  --lumen-coral: #F26B5B;         /* calls to action only */
+
+  /* shadcn semantic colours, Light mode */
+  --color-background: #ffffff;
+  --color-foreground: #0a0a0a;
+  --color-card: #ffffff;
+  --color-card-foreground: #0a0a0a;
+  --color-primary: var(--lumen-teal);
+  --color-primary-foreground: #ffffff;          /* UNCONFIRMED: shadcn uses #fafafa */
+  --color-secondary: var(--lumen-sand);         /* UNCONFIRMED: shadcn secondary role */
+  --color-secondary-foreground: #171717;
+  --color-cta: var(--lumen-coral);
+  --color-cta-foreground: #ffffff;              /* UNCONFIRMED: about 3:1 on coral, below AA for body text */
+  --color-muted: #f5f5f5;                       /* UNCONFIRMED: shadcn default */
+  --color-muted-foreground: #737373;            /* UNCONFIRMED: shadcn default */
+  --color-accent: #f5f5f5;                      /* shadcn hover surface, not Lumen's accent */
+  --color-accent-foreground: #171717;
+  --color-border: #e5e5e5;                      /* UNCONFIRMED: shadcn default */
+  --color-input: #e5e5e5;                       /* UNCONFIRMED: shadcn default */
+  --color-ring: var(--lumen-teal);              /* UNCONFIRMED: shadcn uses #a3a3a3 */
+  --color-destructive: #dc2626;                 /* UNCONFIRMED: shadcn default */
+  --color-destructive-foreground: #fef2f2;
+  --color-overlay: rgba(0, 0, 0, 0.5);          /* shadcn alpha/50, behind dialogs and sheets */
+
+  /* Type. Guidelines: Source Sans 3, headings 600, body 400 */
+  --font-sans: "Source Sans 3", system-ui, sans-serif;
+  --font-weight-body: 400;
+  --font-weight-medium: 500;                    /* UNCONFIRMED: shadcn uses 500 on buttons and labels */
+  --font-weight-heading: 600;
+  /* Sizes in rem so text follows the phone's text-size setting. 1rem = 16px */
+  --text-xs: 0.75rem;   --leading-xs: 1rem;       /* 12 / 16 */
+  --text-sm: 0.875rem;  --leading-sm: 1.25rem;    /* 14 / 20 */
+  --text-base: 1rem;    --leading-base: 1.5rem;   /* 16 / 24 */
+  --text-lg: 1.125rem;  --leading-lg: 1.75rem;    /* 18 / 28 */
+  --text-xl: 1.25rem;   --leading-xl: 1.75rem;    /* 20 / 28 */
+  --text-2xl: 1.5rem;   --leading-2xl: 2rem;      /* 24 / 32 */
+
+  /* Spacing, Tailwind scale from the kit */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+  --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px;
+  --space-12: 48px; --space-16: 64px;
+
+  /* Radius. Guidelines: 8 px. shadcn cards use 14 px (rounded-xl), held to 8 here */
+  --radius: 8px;
+  --radius-sm: 6px;
+  --radius-full: 9999px;
+
+  /* Borders and shadows, shadcn */
+  --border-width: 1px;
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.10), 0 1px 2px -1px rgba(0, 0, 0, 0.10);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.10), 0 4px 6px -4px rgba(0, 0, 0, 0.10);
+
+  /* Control sizes, shadcn defaults (h-9 button and input) */
+  --control-height: 36px;
+  --control-height-lg: 40px;
+}
+
+/* Breakpoints from the kit, for reference in media queries:
+   sm 640px, md 768px, lg 1024px, xl 1280px */
