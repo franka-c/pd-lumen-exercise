@@ -470,3 +470,26 @@ are valid, and the attempt limit are Q-016.
 October 2026, decided by Antonija (design). To confirm with Marta at the next review.
 
 **Supersedes.** None.
+
+## D-031
+
+**Decision.** F-02, my pets, works as follows:
+
+- A pet VetDesk marks as having died moves to a separate "Preminuli" section at the
+  end of the list. It has no booking, reminders, prescriptions or notifications, and
+  its record is read only.
+- The owner can add a photo of each pet from the camera or gallery. Until then the
+  pet's first letter shows. The photo is held by the app, not VetDesk.
+
+**Why.** Nothing in the IA covers pets that have died, and showing one as alive would
+send reminders for it. The brand guidelines ask for real photos of pets, and VetDesk
+is not known to hold any.
+
+**Not decided here.** Whether VetDesk marks a pet that has died, how photos are
+stored, and whether "Preminuli" is the right word are Q-017.
+
+**Source.** `prototype/rules/f-02-pets.md`, prototype design session for F-02, 8
+October 2026, decided by Antonija (design). To confirm with Marta and Petra at the
+next review.
+
+**Supersedes.** None.

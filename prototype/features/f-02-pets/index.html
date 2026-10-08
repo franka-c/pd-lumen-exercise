@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>F-02 Moji ljubimci · Lumen prototip</title>
+  <link rel="stylesheet" href="../../tokens.css?v=0.5.0">
+  <link rel="stylesheet" href="../../shared.css?v=0.5.0">
+</head>
+<body>
+  <!-- F-02 My pets: the list and the pet's page.
+       Rules, decisions and open items: prototype/rules/f-02-pets.md -->
+  <div class="app" id="app"></div>
+  <div id="overlays"></div>
+  <div class="proto-panel" id="proto-panel"></div>
+
+  <details class="devdoc" id="devdoc">
+    <summary>[Prototip] Za developere: ugovor podataka, pravila, tekstovi (EN)</summary>
+    <p>Rules page: <code>prototype/rules/f-02-pets.md</code>. Every state: <code>?state=&lt;id&gt;</code>. <code>?long=1</code>, <code>?text=200</code>. Mock "today" is 20 Oct 2026. The photo in the photo states is a drawn placeholder.</p>
+    <h3>pet (read from VetDesk)</h3>
+    <table>
+      <tr><th>Field</th><th>Type</th><th>Required</th><th>Nullable</th><th>Notes</th><th>Source</th></tr>
+      <tr><td>id</td><td>string</td><td>yes</td><td>no</td><td>VetDesk pet id</td><td>06</td></tr>
+      <tr><td>name</td><td>string</td><td>yes</td><td>no</td><td>two lines on the card, wraps on the page</td><td>IA</td></tr>
+      <tr><td>species</td><td>string</td><td>yes</td><td>no</td><td>as VetDesk holds it</td><td>IA</td></tr>
+      <tr><td>breed</td><td>string</td><td>no</td><td>yes</td><td>one line with ellipsis on the card</td><td>IA</td></tr>
+      <tr><td>born</td><td>date</td><td>yes</td><td>no</td><td>age: months under one year, then years, Croatian plural</td><td>IA</td></tr>
+      <tr><td>clinic_id, vet_id</td><td>string</td><td>yes</td><td>vet_id yes</td><td>the pet's clinic and vet, F-05's defaults</td><td>IA, D-002</td></tr>
+      <tr><td>deceased_on</td><td>date</td><td>no</td><td>yes</td><td><span class="unconf">the VetDesk marker for a pet that has died, UNCONFIRMED (Q-017)</span></td><td>D-031</td></tr>
+    </table>
+    <h3>pet_photo (held by the app, not VetDesk)</h3>
+    <table>
+      <tr><th>Field</th><th>Type</th><th>Notes</th></tr>
+      <tr><td>pet_id, owner_id</td><td>string</td><td>one photo per pet</td></tr>
+      <tr><td>image</td><td>image</td><td><span class="unconf">storage, size limit and deletion with the account, UNCONFIRMED (Q-017)</span>. Cropped to a square, shown as a circle</td></tr>
+    </table>
+    <h3>Interaction rules</h3>
+    <ul>
+      <li>List: living pets by name, then "Preminuli". Card: photo or first letter, name, species and breed, age and clinic. A deceased pet shows the years.</li>
+      <li>Pet page: details, "Podatke vodi klinika. Za ispravak se javite klinici.", "Rezerviraj termin" (opens F-05), and Karton, Cijepljenja, Recepti (F-03, F-04, F-08).</li>
+      <li>Photo: "Dodaj fotografiju" from camera or gallery; then "Promijeni" and "Ukloni" (asks first). A failed save: "Fotografija nije spremljena. Pokušajte ponovno."</li>
+      <li>Deceased (D-031): no booking, no reminders, no prescriptions, no notifications; Karton read only; the photo stays and cannot be changed.</li>
+      <li>VetDesk not answering: the last saved data with "Podaci od 10:02. Osvježavanje nije uspjelo." and retry (07: VetDesk data cached for display). With nothing saved: an error with retry.</li>
+      <li>A pet VetDesk moves off this owner simply disappears.</li>
+    </ul>
+    <h3>Open</h3>
+    <ul><li class="unconf">Q-017: the deceased marker in VetDesk, photo storage (Iva); the word "Preminuli" (Petra).</li></ul>
+  </details>
+
+  <script src="data.js?v=0.5.0"></script>
+  <script src="pets.js?v=0.5.0"></script>
+</body>
+</html>

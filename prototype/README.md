@@ -6,7 +6,7 @@ owner: designer
 updated: 2026-10-08
 depends_on: [01-project-alignment, 01-project-alignment-risks, 03-user-personas, 05-information-architecture, 06-feature-prioritization, 07-technical-solution-proposal]
 feeds: []
-decisions: [D-010, D-026, D-027, D-028, D-029, D-030]
+decisions: [D-010, D-026, D-027, D-028, D-029, D-030, D-031]
 ---
 
 # Development-ready prototype
@@ -25,12 +25,12 @@ at each client review.
 
 ## Status
 
-Version 0.4.0. F-01 sign-in, F-05 booking, F-06 moving or cancelling, and F-10 the
-reception web view are built and verified in the browser, with rules pages under
-`rules/`. Open `index.html` or serve this folder and open a feature.
+Version 0.5.0. F-01 sign-in, F-02 my pets, F-05 booking, F-06 moving or cancelling, and
+F-10 the reception web view are built and verified in the browser, with rules pages
+under `rules/`. Open `index.html` or serve this folder and open a feature.
 
 Design system: the shadcn/ui kit for structure and Lumen's brand for colour, type and
 corners, snapshotted in `tokens.css` (D-007). Values the brand does not set are marked
 unconfirmed there.
 
-Next: F-02 and F-03, the owner's pets and the pet's record.
+Next: F-03, the pet's record.
