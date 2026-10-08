@@ -343,3 +343,7 @@ body:has(.desk-header) .proto-panel { top: auto; bottom: var(--space-3); }
 
 /* Bottom navigation of the owner app (D-010): four tabs share the width and wrap at large text */
 nav.footer .tab { min-width: 0; overflow-wrap: anywhere; padding: var(--space-2) var(--space-1); }
+
+/* Email previews (F-07) use the full width, up to the 600 px email column */
+.app.is-email { max-width: none; border: 0; border-radius: 0; }
+@media (min-width: 768px) { body:has(.app.is-email) { padding: 0; } }

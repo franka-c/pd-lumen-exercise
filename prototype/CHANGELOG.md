@@ -4,6 +4,7 @@ Versioned, newest first. Tagged at each client review session.
 
 | Date | Version | Feature | What changed | Decision |
 | --- | --- | --- | --- | --- |
+| 2026-10-08 | 0.8.0 | F-07 | First version. Home with the next appointment and due cards linking into F-05 and F-06, the bottom bar linking the built areas, and push and email reminders for due vaccinations and booked appointments | D-034 |
 | 2026-10-08 | 0.7.0 | F-04 | First version. What VetDesk returns as due, overdue first and calm, booking from a due item, and the history | D-033 |
 | 2026-10-08 | 0.7.0 | F-05 | Booking takes the pet, type and clinic from the link. Mock data aligned with F-04: Rex is due, the not-due warning shows Mica | D-033 |
 | 2026-10-08 | 0.6.0 | F-03 | First version. The record by year, 20 at a time, consultations with the notes and documents the vet released, an in-app document viewer. F-02's "Karton" opens it | D-032 |

@@ -6,7 +6,7 @@ owner: designer
 updated: 2026-10-08
 depends_on: [01-project-alignment, 01-project-alignment-risks, 03-user-personas, 05-information-architecture, 06-feature-prioritization, 07-technical-solution-proposal]
 feeds: []
-decisions: [D-010, D-026, D-027, D-028, D-029, D-030, D-031, D-032, D-033]
+decisions: [D-010, D-026, D-027, D-028, D-029, D-030, D-031, D-032, D-033, D-034]
 ---
 
 # Development-ready prototype
@@ -25,13 +25,13 @@ at each client review.
 
 ## Status
 
-Version 0.7.0. F-01 sign-in, F-02 my pets, F-03 the record, F-04 vaccinations, F-05
-booking, F-06 moving or cancelling, and F-10 the reception web view are built and
-verified in the browser, with rules pages under `rules/`. Open `index.html` or serve
-this folder and open a feature.
+Version 0.8.0. F-01 sign-in, F-02 my pets, F-03 the record, F-04 vaccinations, F-05
+booking, F-06 moving or cancelling, F-07 Home and reminders, and F-10 the reception web
+view are built and verified in the browser, with rules pages under `rules/`. Open
+`index.html` or serve this folder and open a feature.
 
 Design system: the shadcn/ui kit for structure and Lumen's brand for colour, type and
 corners, snapshotted in `tokens.css` (D-007). Values the brand does not set are marked
 unconfirmed there.
 
-Next: F-07, reminders by push and email, and the Home screen.
+Next: F-08 and F-09, repeat prescriptions.

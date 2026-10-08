@@ -526,3 +526,27 @@ not feel scolded. Listing it first keeps it from being missed.
 review.
 
 **Supersedes.** None.
+
+## D-034
+
+**Decision.** F-07 sends reminders as follows, by push notification and email:
+
+- A vaccination VetDesk returns as due: 14 days before the due date, and again on the
+  due date if nothing is booked. No reminder once a vaccination appointment is
+  requested or confirmed, and none after the due date.
+- A booked appointment: a push the day before at 18:00 and an email on the morning of
+  the appointment.
+
+**Why.** D-006 sets the channels and D-014 the source, but not when reminders go out.
+Fourteen days leaves time to book. Stopping once booked avoids nagging. Appointment
+reminders cut missed appointments, and the email reaches owners who do not open the
+app.
+
+**Not decided here.** Appointment reminders go beyond the IA, which names only due
+items, so Marta confirms them. Quiet hours, the email time and an unsubscribe link
+are Q-020. The 14-day reminder needs future due dates from VetDesk (Q-019).
+
+**Source.** `prototype/rules/f-07-home.md`, prototype design session for F-07, 8
+October 2026, decided by Antonija (design). To confirm with Marta at the next review.
+
+**Supersedes.** None.
