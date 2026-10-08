@@ -10,7 +10,7 @@ covers: [states, long-text, data-shape, interaction, breakpoints]
 
 Fictional client, created for an internal DECODE exercise.
 
-Prototype: `prototype/features/f-05-booking/index.html`, version 0.1.0. Every state
+Prototype: `prototype/features/f-05-booking/index.html`, version 0.2.0. Every state
 below opens with `?state=<id>`. `?long=1` loads long content and `?text=200` doubles
 the text size.
 
@@ -32,8 +32,8 @@ Petra).
   and clinic (D-020) and the same vet and type (D-027).
 - **Cancel a request.** From a Requested card, after a confirmation. Exits to F-10,
   where the request disappears from reception's list.
-- **Move or cancel a confirmed appointment.** The Confirmed card links to F-06, which
-  is not built yet.
+- **Move or cancel a confirmed appointment.** The Confirmed card opens F-06
+  (`prototype/rules/f-06-move-cancel.md`).
 
 ## States
 
@@ -172,7 +172,7 @@ vet, within 60 requests a minute.
 
 ## Deferred
 
-- Moving or cancelling a confirmed appointment is F-06. The card's button links there.
+- Moving or cancelling a confirmed appointment is F-06. The card's button opens it.
 - Past appointments are not in F-05.
 - Adding a pet is F-12, Future. The no-pets state says the clinic adds pets.
 - A language setting comes with Slovenian (D-022).

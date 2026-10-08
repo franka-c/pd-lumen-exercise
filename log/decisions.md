@@ -383,3 +383,36 @@ October 2026, decided by Antonija (design). To confirm with Marta at the next re
 The emergency notice touches a clinical case, so Petra should see it too.
 
 **Supersedes.** None.
+
+## D-028
+
+**Decision.** F-06, moving or cancelling a confirmed appointment, behaves as follows:
+
+- A move is a request. The old appointment stands until VetDesk confirms the new
+  time. If reception rejects the move within 15 minutes, the old time stays and the
+  owner gets a push notification with the reason.
+- A cancellation is a request too. It completes after 15 minutes unless reception
+  rejects it, for example a late cancellation under the policy. The owner gets a
+  push notification either way.
+- Cancelling within 24 hours of the start shows one Lumen-wide policy text. Moving
+  does not, as the IA says.
+- No changes in the app from 15 minutes before the start. The card shows the
+  clinic's phone number instead.
+- A move changes only the day and time. While a move is pending the owner can only
+  withdraw it, which is immediate. While a cancellation is pending the owner can do
+  nothing.
+
+**Why.** The IA says only that owners move or cancel a confirmed appointment and that
+cancelling within 24 hours shows the policy. VetDesk puts every write into a pending
+state for 15 minutes (D-013), so each change needed an answer for that window. The
+owner never loses a slot to a rejected move, and every request settles before the
+appointment starts.
+
+**Not decided here.** Whether VetDesk can hold the old slot while a move is pending,
+and whether a pending cancellation completes by itself, is Q-013. The policy text is
+Q-014.
+
+**Source.** `prototype/rules/f-06-move-cancel.md`, prototype design session for F-06,
+8 October 2026, decided by Antonija (design). To confirm with Marta at the next review.
+
+**Supersedes.** None.

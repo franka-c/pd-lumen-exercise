@@ -197,6 +197,7 @@ deliverables:
   - D-010
   - D-026
   - D-027
+  - D-028
   superseded_citations: []
   reviewed: []
   stale_upstream: []
@@ -211,6 +212,17 @@ prototype:
   rules_pages:
   - path: prototype/rules/f-05-booking.md
     feature: f-05-booking
+    status: draft
+    covers:
+    - states
+    - long-text
+    - data-shape
+    - interaction
+    - breakpoints
+    changed: '2026-10-08'
+    reconciled: '2026-10-08'
+  - path: prototype/rules/f-06-move-cancel.md
+    feature: f-06-move-cancel
     status: draft
     covers:
     - states

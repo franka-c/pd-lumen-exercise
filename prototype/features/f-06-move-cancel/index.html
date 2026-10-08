@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>F-06 Promjena i otkazivanje termina · Lumen prototip</title>
+  <link rel="stylesheet" href="../../tokens.css?v=0.2.0">
+  <link rel="stylesheet" href="../../shared.css?v=0.2.0">
+</head>
+<body>
+  <!-- F-06 Move or cancel a confirmed appointment.
+       Rules, decisions and open items: prototype/rules/f-06-move-cancel.md -->
+  <div class="app" id="app"></div>
+  <div id="overlays"></div>
+  <div class="proto-panel" id="proto-panel"></div>
+
+  <details class="devdoc" id="devdoc">
+    <summary>[Prototip] Za developere: ugovor podataka, pravila, tekstovi (EN)</summary>
+
+    <p>Rules page: <code>prototype/rules/f-06-move-cancel.md</code>. Every state: <code>?state=&lt;id&gt;</code> (see the PROTOTIP panel). <code>?long=1</code> long content, <code>?text=200</code> 200% text. Mock "now" is Tue 20 Oct 2026, 10:00.</p>
+
+    <h3>booking, fields F-06 adds or reads</h3>
+    <table>
+      <tr><th>Field</th><th>Type</th><th>Required</th><th>Nullable</th><th>Values, format</th><th>Source</th></tr>
+      <tr><td>status</td><td>enum</td><td>yes</td><td>no</td><td>F-06 acts only on <code>confirmed</code>. A completed cancellation sets <code>cancelled</code></td><td>D-019, D-027, D-028</td></tr>
+      <tr><td>pending_change</td><td>object</td><td>no</td><td>yes</td><td><code>null</code>, <code>{kind: "move", slot_start, requested_at}</code> or <code>{kind: "cancel", requested_at}</code>. At most one at a time</td><td>D-028</td></tr>
+      <tr><td>pending_change.slot_start</td><td>datetime</td><td>when move</td><td>no</td><td>ISO 8601 with offset, Europe/Zagreb. The old <code>slot_start</code> stays until VetDesk confirms</td><td>D-028, Q-013</td></tr>
+      <tr><td>pending_change.requested_at</td><td>datetime</td><td>yes</td><td>no</td><td>reception can reject until requested_at + 15 min</td><td>D-024, D-028</td></tr>
+      <tr><td>reject_reason_code</td><td>enum</td><td>on a rejected change</td><td>yes</td><td><span class="unconf">UNCONFIRMED placeholders: vet_unavailable, late_cancellation, other (Q-010)</span></td><td>D-005</td></tr>
+    </table>
+
+    <h3>Settings</h3>
+    <table>
+      <tr><th>Field</th><th>Type</th><th>Notes</th></tr>
+      <tr><td>cancellation_policy</td><td>string</td><td><span class="unconf">one text for all of Lumen, UNCONFIRMED placeholder (Q-014)</span></td></tr>
+      <tr><td>clinic.phone</td><td>string</td><td><span class="unconf">numbers here are MOCK</span>, as in F-05</td></tr>
+    </table>
+
+    <h3>Interaction rules</h3>
+    <ul>
+      <li>Only a Confirmed appointment without a pending change offers "Promijeni ili otkaži", which opens a sheet: Promijeni termin, Otkaži termin, Natrag.</li>
+      <li>From 15 minutes before the start the button is replaced by "Za promjene nazovite kliniku" and the clinic's phone (D-028).</li>
+      <li>Move: only day and time change; pet, clinic, vet and type stay. The appointment's own time, and times inside the cut-off, are not offered. Four weeks of free times (D-027).</li>
+      <li>Send is disabled until a day and time are chosen; "Šaljem…" while sending. Success: back to Termini, the card keeps the old time and shows "Premještanje na …, čeka potvrdu klinike", toast "Zahtjev za promjenu je poslan".</li>
+      <li>While a move is pending the card offers only "Odustani od promjene", which removes the request at once, keeps the old time, toast "Promjena je povučena".</li>
+      <li>Move confirmed: the card shows the new time, push "Termin je premješten". Rejected: the old time stays, push "Promjena termina nije prihvaćena" with the reason.</li>
+      <li>Cancel: confirmation sheet "Otkazati termin?". Inside 24 hours it also shows the policy text (IA). Moves never show it.</li>
+      <li>After sending, the card shows "Otkazivanje zatraženo, čeka potvrdu klinike" and offers nothing. Confirmed: the card disappears, push "Termin je otkazan". Rejected: the appointment stands, push "Otkazivanje nije prihvaćeno" with the reason.</li>
+      <li>Time taken and send failure behave as in F-05. Closing the move after a time is chosen asks "Odbaciti promjenu?".</li>
+    </ul>
+
+    <h3>Copy (all Croatian here is unconfirmed, Q-011)</h3>
+    <table>
+      <tr><th>HR</th><th>EN</th></tr>
+      <tr><td>Promijeni ili otkaži</td><td>Change or cancel</td></tr>
+      <tr><td>Promijeni termin / Otkaži termin</td><td>Change appointment / Cancel appointment</td></tr>
+      <tr><td>Premještanje na …, čeka potvrdu klinike</td><td>Moving to …, waiting for the clinic</td></tr>
+      <tr><td>Otkazivanje zatraženo, čeka potvrdu klinike</td><td>Cancellation requested, waiting for the clinic</td></tr>
+      <tr><td>Odustani od promjene</td><td>Withdraw the change</td></tr>
+      <tr><td>Za promjene nazovite kliniku</td><td>For changes, call the clinic</td></tr>
+      <tr><td>Ostaje dok klinika ne potvrdi novi termin.</td><td>Stays until the clinic confirms the new time.</td></tr>
+      <tr><td>Klinika ima 15 minuta da potvrdi otkazivanje.</td><td>The clinic has 15 minutes to confirm the cancellation.</td></tr>
+      <tr><td>Termin je premješten / Termin je otkazan</td><td>Appointment moved / Appointment cancelled</td></tr>
+      <tr><td>Promjena termina nije prihvaćena / Otkazivanje nije prihvaćeno</td><td>Change not accepted / Cancellation not accepted</td></tr>
+    </table>
+
+    <h3>Open</h3>
+    <ul>
+      <li class="unconf">Q-013 (Iva): can VetDesk hold the old slot during a pending move, and does a pending cancellation complete by itself after 15 minutes?</li>
+      <li class="unconf">Q-014 (Marta): the cancellation policy text.</li>
+      <li class="unconf">Q-010: rejection reasons, now also for changes.</li>
+    </ul>
+  </details>
+
+  <script src="data.js?v=0.2.0"></script>
+  <script src="move-cancel.js?v=0.2.0"></script>
+</body>
+</html>
