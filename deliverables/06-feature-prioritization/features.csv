@@ -11,4 +11,4 @@ F-09,Request a repeat prescription renewal,My pets,5,3,3,4,MVP,D-004 approval ru
 F-10,Reception request queue with approve and reject,Reception,5,3,2,5,MVP,D-005
 F-11,Notification preferences,Account,2,1,1,2,Future,
 F-12,Add a pet (request to clinic),My pets,2,2,2,0,Future,
-F-13,Reception messages an owner,Reception,3,3,2,1,Future,Unparked by D-011 on 2026-10-08. Re-score open
+F-13,Reception messages an owner,Reception,3,3,2,1,MVP,D-011. Score low but MVP by decision. Owner cannot reply (D-012)
