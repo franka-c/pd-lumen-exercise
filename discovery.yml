@@ -204,6 +204,7 @@ deliverables:
   - D-032
   - D-033
   - D-034
+  - D-035
   superseded_citations: []
   reviewed: []
   stale_upstream: []
@@ -284,6 +285,17 @@ prototype:
     reconciled: '2026-10-08'
   - path: prototype/rules/f-07-home.md
     feature: f-07-home
+    status: draft
+    covers:
+    - states
+    - long-text
+    - data-shape
+    - interaction
+    - breakpoints
+    changed: '2026-10-08'
+    reconciled: '2026-10-08'
+  - path: prototype/rules/f-08-f-09-prescriptions.md
+    feature: f-08-f-09-prescriptions
     status: draft
     covers:
     - states
