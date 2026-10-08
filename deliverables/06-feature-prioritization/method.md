@@ -3,7 +3,7 @@ deliverable: 06-feature-prioritization
 project_number: 4
 status: confirmed
 owner: pm
-updated: 2026-10-09
+updated: 2026-10-08
 confirmed_with_client: 2026-10-03
 depends_on: [05-information-architecture]
 feeds: [07-technical-solution-proposal, 10-development-ready-prototype]
