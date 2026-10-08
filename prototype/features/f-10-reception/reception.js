@@ -168,6 +168,7 @@
             <button class="btn btn-outline" data-act="reject-cancel">Natrag</button></div>`
         : `<div class="actions"><button class="btn btn-primary" data-act="approve" data-check="approve" ${app.sending || app.error === "handled" ? "disabled" : ""}>${app.sending ? "Šaljem…" : app.error === "send" ? "Pokušaj ponovno" : "Odobri"}</button>
             <button class="btn btn-outline" data-act="reject-open" ${app.error === "handled" ? "disabled" : ""}>Odbij</button></div>`}
+        <a class="btn btn-ghost" href="../f-13-messages/index.html?side=reception&state=compose-from-request" data-check="message-owner">Pošalji poruku vlasniku</a>
       </aside>`;
     }
     // Prescription
@@ -224,7 +225,7 @@
     if (!t) return;
     switch (t.dataset.act) {
       case "panel": document.getElementById("proto-panel").classList.toggle("open"); return;
-      case "tab": app.tab = t.dataset.tab; app.selected = null; break;
+      case "tab": if (t.dataset.tab === "messages") { location.href = "../f-13-messages/index.html?side=reception&state=sent"; return; } app.tab = t.dataset.tab; app.selected = null; break;
       case "retry": app.listMode = "default"; break;
       case "select": select(t.dataset.id); return;
       case "close": app.selected = null; break;

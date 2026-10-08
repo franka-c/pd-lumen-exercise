@@ -573,3 +573,29 @@ F-08 and F-09, 8 October 2026, decided by Antonija (design). To confirm with Pet
 the next review.
 
 **Supersedes.** None.
+
+## D-036
+
+**Decision.** F-13, reception messages, works as follows:
+
+- Reception picks the owner by searching name, pet or phone in the Messages list, or
+  sends from a request's detail in F-10 with owner and pet chosen.
+- Reception sees each message's status: sent, and read with the time. A message
+  unread after 24 hours suggests a call.
+- An owner without the app gets the message by email, if the clinic has one.
+  Reception sees "Šalje se e-mailom" before sending, and there is no read status. An
+  owner with neither cannot be messaged, and reception is told to call.
+
+**Why.** D-011, D-018 and D-025 set the channel, the place and the list, but not how
+reception picks a recipient or whether it knows a message arrived. Reading status
+tells Sanja when to call after all. Email keeps the message from vanishing for owners
+who never activate the app.
+
+**Not decided here.** Email extends D-011, so Marta confirms it. The two extra
+templates, the 500-character limit, the 24 hours and read receipts in the privacy
+notice are Q-022.
+
+**Source.** `prototype/rules/f-13-messages.md`, prototype design session for F-13, 8
+October 2026, decided by Antonija (design). To confirm with Marta at the next review.
+
+**Supersedes.** None.

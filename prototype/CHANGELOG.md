@@ -4,6 +4,7 @@ Versioned, newest first. Tagged at each client review session.
 
 | Date | Version | Feature | What changed | Decision |
 | --- | --- | --- | --- | --- |
+| 2026-10-08 | 1.0.0 | F-13 | First version. Reception sends one-way messages from templates, by search or from a request, sees sent and read status; owners without the app get email. Owners read them on Home in "Od vaše klinike". F-10 and F-07 link here. All MVP features are now built | D-036 |
 | 2026-10-08 | 0.9.0 | F-08, F-09 | First version. Active prescriptions, renewal requests from 7 days before the next eligible date, the request as the vet sees it with an optional note, statuses with push, the Home renewal card. F-10 shows the owner's note, F-02 and F-07 link here | D-035 |
 | 2026-10-08 | 0.8.0 | F-07 | First version. Home with the next appointment and due cards linking into F-05 and F-06, the bottom bar linking the built areas, and push and email reminders for due vaccinations and booked appointments | D-034 |
 | 2026-10-08 | 0.7.0 | F-04 | First version. What VetDesk returns as due, overdue first and calm, booking from a due item, and the history | D-033 |

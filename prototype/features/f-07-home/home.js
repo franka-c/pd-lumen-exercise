@@ -57,7 +57,10 @@
           <p data-check="${v.due_date < M.today ? "overdue" : "upcoming"}">${v.due_date < M.today ? "Dospjelo" : "Dospijeva"} ${esc(fmtShort(v.due_date))}</p>
           <p class="meta">${esc(M.clinics[v.clinic_id].name)}</p>
           <div><a class="btn btn-primary" href="../f-05-booking/index.html?state=book&pet=${v.pet_id}&type=vaccination&clinic=${v.clinic_id}">Rezerviraj</a></div>`)).join("");
-      const later = `<div class="option" style="cursor:default" data-check="slot-f13"><span class="option-body">Od vaše klinike</span><span class="badge badge-unconfirmed">F-13, još nije izrađeno</span></div>
+      const later = `<section class="field" data-check="from-clinic"><h2 style="font-size:var(--text-base)">Od vaše klinike</h2>
+          <a class="option" style="color:inherit;text-decoration:none;align-items:flex-start" href="../f-13-messages/index.html?side=owner&state=message"><span style="width:8px;height:8px;margin-top:8px;border-radius:var(--radius-full);flex:none;background:var(--color-primary)" aria-label="Nepročitano"></span>
+          <span class="option-body"><span class="truncate" style="display:block;font-weight:var(--font-weight-heading)">Rex: nalazi su stigli. Možete ih pogledati u kartonu u aplikaciji ili nas nazovite.</span><span class="meta">Lumen Trešnjevka · danas 09:15</span></span></a>
+          <a class="btn btn-outline" href="../f-13-messages/index.html?side=owner&state=all">Prikaži sve</a></section>
         <article class="card" data-check="renewal"><p class="card-title">Rex: Caninsulin 40 IU/ml</p><p>Možete zatražiti obnovu.</p><div><a class="btn btn-primary" href="../f-08-f-09-prescriptions/index.html?state=request">Zatraži obnovu</a></div></article>`;
       const empty = !next && !due.length ? `<div class="empty" data-check="empty"><p>Nema ništa novo. Kad vašem ljubimcu nešto dospije, vidjet ćete to ovdje.</p><a class="btn btn-primary" href="../f-05-booking/index.html?state=book">Rezerviraj termin</a></div>` : "";
       body = stale + empty + nextCard + dueCards + later;
