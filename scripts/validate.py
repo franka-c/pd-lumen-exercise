@@ -213,11 +213,14 @@ def main() -> int:
             if dn is not None and did not in (dn.get("depends_on") or []):
                 warnings.append(f"{did} feeds {down}, but {down} does not list it in depends_on")
 
-    # Every prototype feature has a rules page, and the reverse.
+    # Every prototype feature has a rules page, and the reverse. A feature may start
+    # without one, so a missing page warns rather than blocks: the designer builds
+    # first and writes the rules as the feature settles.
     features = {p.name for p in (root / "prototype" / "features").glob("*") if p.is_dir()}
     ruled = {p.stem for p in (root / "prototype" / "rules").glob("*.md") if p.name != "TEMPLATE.md"}
     for name in sorted(features - ruled):
-        errors.append(f"prototype/features/{name}: no rules page at prototype/rules/{name}.md")
+        warnings.append(f"prototype/features/{name}: no rules page yet at prototype/rules/{name}.md. "
+                        f"Write it before the feature goes to the client")
     for name in sorted(ruled - features):
         warnings.append(f"prototype/rules/{name}.md: no feature at prototype/features/{name}")
 

@@ -121,7 +121,8 @@ covers: [states, long-text, data-shape, interaction, breakpoints]
 ```
 
 `covers` is the playbook's five areas. The validator fails a feature that
-claims `status: confirmed` without all five.
+claims `status: confirmed` without all five. A feature with no rules page yet only
+warns, so a feature can be started before its rules are written.
 
 ## Reserved values
 
