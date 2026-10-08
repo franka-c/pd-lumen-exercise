@@ -614,6 +614,7 @@ together, while the feature pages stay the specification developers build from.
 
 **Source.** `prototype/rules/f-07-home.md`, prototype design session, 8 October 2026,
 decided by Antonija (design). The alternatives were a timeline and a summary sentence
-with swipeable cards. To show Marta at the next review.
+with swipeable cards. To show Marta at the next review. It changes how Home looks, not
+when reminders go out.
 
-**Supersedes.** None. It changes F-07's layout, not its rules (D-034).
+**Supersedes.** None.
