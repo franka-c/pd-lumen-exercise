@@ -66,7 +66,9 @@ line by hand defeats the point of the word.
 because a commit that only records a review would otherwise re-flag everything
 downstream. To stop a forgotten bump from hiding a change, the pull request check
 fails any deliverable whose content changed without `updated` moving. Edits that
-touch only front-matter, such as a review or a Figma date, may leave it alone.
+touch only front-matter, such as a review or a Figma date, may leave it alone. A
+date that already says today passes, because `updated` has day precision and
+cannot move twice in one day.
 
 ## Calls
 
