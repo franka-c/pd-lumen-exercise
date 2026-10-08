@@ -292,3 +292,62 @@ October 2026. The note records it as accepted by Iva. To confirm with Marta at t
 review.
 
 **Supersedes.** None.
+
+## D-022
+
+**Decision.** There is no language setting at launch. It goes in Account when
+Slovenian comes.
+
+**Why.** Lumen launches in Croatian only (D-016), so there is nothing to switch.
+
+**Source.** `log/calls/2026-10-15-ia-review.md`, said by Marta.
+
+**Supersedes.** None.
+
+## D-023
+
+**Decision.** Lumen confirms the booking states in D-019 and D-020: the requested card,
+and what the owner sees when reception rejects a request.
+
+**Why.** Both were the team's own decisions, waiting for Marta.
+
+**Source.** `log/calls/2026-10-15-ia-review.md`, said by Marta.
+
+**Supersedes.** None.
+
+## D-024
+
+**Decision.** Reception has 15 minutes to reject a booking request. After that VetDesk
+confirms it, and the owner sees it as confirmed. There is no 24-hour pending state.
+
+**Why.** VetDesk confirms a pending write by itself after 15 minutes if the slot is
+still free (D-013), so a request cannot stay pending for 24 hours. Booking is not
+clinical, so Petra raises no veto.
+
+**Source.** `log/calls/2026-10-15-ia-review.md`, said by Marta, with Tomislav. Closes
+Q-009.
+
+**Supersedes.** D-021.
+
+## D-025
+
+**Decision.** Reception sends messages from a third list, Messages, next to Appointment
+requests and Prescription requests, and sees there what it has sent.
+
+**Why.** It settles the reception half of Q-004, and the two lists D-010 kept until
+then.
+
+**Source.** `log/calls/2026-10-15-ia-review.md`, said by Marta. Closes Q-008.
+
+**Supersedes.** None.
+
+## D-026
+
+**Decision.** Lumen confirms the IA as shown on 15 October: four areas in the owner
+app, and the reception web view with three lists. The prototype starts.
+
+**Why.** Marta: "Yes. Confirmed. Start the prototype." Petra confirmed from her side.
+
+**Source.** `log/calls/2026-10-15-ia-review.md`, said by Marta and Petra.
+
+**Supersedes.** None.
