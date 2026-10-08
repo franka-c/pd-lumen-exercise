@@ -233,3 +233,12 @@ material:
   - 06-feature-prioritization
   - 07-technical-solution-proposal
   - 10-development-ready-prototype
+- path: client/2026-10-08-vetdesk-api-answer/README.md
+  topic: vetdesk-api-answer
+  status: worked-in
+  added: 2026-10-08
+  added_by: stella
+  source: email from Tomislav Jurić to Iva Marić, 8 October 2026, after his call with
+    VetDesk support. Partner API documentation in Drive (Lumen / VetDesk / partner-api-v3.pdf)
+  feeds:
+  - 07-technical-solution-proposal

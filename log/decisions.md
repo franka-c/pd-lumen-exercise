@@ -153,3 +153,19 @@ Petra's veto.
 **Source.** `log/calls/2026-10-08-ia-workshop.md`, said by Petra.
 
 **Supersedes.** None.
+
+## D-013
+
+**Decision.** VetDesk accepts appointment writes through the partner API, so the
+technical proposal uses Design A. Prescriptions stay read-only in VetDesk, and the
+approval outcome is written back as a note on the record.
+
+**Why.** VetDesk support confirmed to Tomislav that the partner API creates and
+updates appointments under a key issued per practice group, and that Lumen qualifies
+as one group. The same call confirmed that prescriptions can only be read, so the
+approval flow D-004 requires stays on our side.
+
+**Source.** `client/2026-10-08-vetdesk-api-answer/email.md`, email from Tomislav
+Jurić to Iva Marić, 8 October 2026. Closes Q-001.
+
+**Supersedes.** None.
