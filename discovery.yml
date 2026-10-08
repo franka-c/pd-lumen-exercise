@@ -200,6 +200,7 @@ deliverables:
   - D-028
   - D-029
   - D-030
+  - D-031
   superseded_citations: []
   reviewed: []
   stale_upstream: []
@@ -214,6 +215,17 @@ prototype:
   rules_pages:
   - path: prototype/rules/f-01-sign-in.md
     feature: f-01-sign-in
+    status: draft
+    covers:
+    - states
+    - long-text
+    - data-shape
+    - interaction
+    - breakpoints
+    changed: '2026-10-08'
+    reconciled: '2026-10-08'
+  - path: prototype/rules/f-02-pets.md
+    feature: f-02-pets
     status: draft
     covers:
     - states
