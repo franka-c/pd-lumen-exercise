@@ -175,7 +175,8 @@
     const facts = `<dl><dt>Ljubimac</dt><dd>${esc(r.pet)}, ${esc(r.species)}</dd><dt>Vlasnik</dt><dd>${esc(r.owner)}</dd>
       <dt>Lijek</dt><dd><strong>${esc(r.medicine)}</strong></dd><dt>Doza</dt><dd>${esc(r.dose)}</dd>
       <dt>Zadnji pregled</dt><dd data-check="last-consultation">${lc ? `${esc(fmtDate(lc.date))}, ${esc(M.vets[lc.vet_id])}<br><span class="meta">${esc(lc.note)}</span>` : "Nema pregleda u kartoteci"}</dd>
-      <dt>Zadnje izdavanje</dt><dd data-check="last-dispensed">${r.last_dispensed ? esc(fmtDate(r.last_dispensed)) : "Nije izdavan"}</dd></dl>`;
+      <dt>Zadnje izdavanje</dt><dd data-check="last-dispensed">${r.last_dispensed ? esc(fmtDate(r.last_dispensed)) : "Nije izdavan"}</dd>
+      ${r.owner_note ? `<dt>Napomena vlasnika</dt><dd data-check="owner-note">${esc(r.owner_note)}</dd>` : ""}</dl>`;
     if (ROLE === "vet") {
       return `<aside class="desk-detail" data-check="detail">${close}${facts}${errors()}
         ${app.rejecting ? reasonPicker(M.reasons.prescriptionVet) + `<div class="actions">

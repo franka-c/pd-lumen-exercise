@@ -58,7 +58,7 @@
           <p class="meta">${esc(M.clinics[v.clinic_id].name)}</p>
           <div><a class="btn btn-primary" href="../f-05-booking/index.html?state=book&pet=${v.pet_id}&type=vaccination&clinic=${v.clinic_id}">Rezerviraj</a></div>`)).join("");
       const later = `<div class="option" style="cursor:default" data-check="slot-f13"><span class="option-body">Od vaše klinike</span><span class="badge badge-unconfirmed">F-13, još nije izrađeno</span></div>
-        <div class="option" style="cursor:default" data-check="slot-f09"><span class="option-body">Obnova recepta</span><span class="badge badge-unconfirmed">F-09, još nije izrađeno</span></div>`;
+        <article class="card" data-check="renewal"><p class="card-title">Rex: Caninsulin 40 IU/ml</p><p>Možete zatražiti obnovu.</p><div><a class="btn btn-primary" href="../f-08-f-09-prescriptions/index.html?state=request">Zatraži obnovu</a></div></article>`;
       const empty = !next && !due.length ? `<div class="empty" data-check="empty"><p>Nema ništa novo. Kad vašem ljubimcu nešto dospije, vidjet ćete to ovdje.</p><a class="btn btn-primary" href="../f-05-booking/index.html?state=book">Rezerviraj termin</a></div>` : "";
       body = stale + empty + nextCard + dueCards + later;
     }

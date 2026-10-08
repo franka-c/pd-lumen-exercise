@@ -35,7 +35,8 @@ window.MOCK = {
       last_dispensed: "2026-09-22", requested_at: "2026-10-20T08:40:00+02:00", registered_here: true },
     { id: "p2", pet: "Maza", species: "mačka", owner: "Ivana Kovač", medicine: "Caninsulin 40 IU/ml", dose: "2 IU dvaput dnevno",
       last_consultation: { date: "2026-07-14", vet_id: "v-babic", note: "Dijabetes, kontrola glukoze za 3 mjeseca." },
-      last_dispensed: "2026-09-25", requested_at: "2026-10-20T09:10:00+02:00", registered_here: true },
+      last_dispensed: "2026-09-25", requested_at: "2026-10-20T09:10:00+02:00", registered_here: true,
+      owner_note: "Zadnja dva tjedna pije više vode nego inače. Inače je dobro." },
     { id: "p3", pet: "Fluffy", species: "mačka", owner: "Tena Jurić", medicine: "Meloksikam 0,5 mg/ml", dose: "0,1 ml dnevno",
       last_consultation: null, last_dispensed: null, requested_at: "2026-10-20T09:40:00+02:00", registered_here: false }
   ],

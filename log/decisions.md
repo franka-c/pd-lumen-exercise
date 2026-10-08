@@ -550,3 +550,26 @@ are Q-020. The 14-day reminder needs future due dates from VetDesk (Q-019).
 October 2026, decided by Antonija (design). To confirm with Marta at the next review.
 
 **Supersedes.** None.
+
+## D-035
+
+**Decision.** In F-08 and F-09, repeat prescriptions:
+
+- The owner can request a renewal from 7 days before the prescription's next eligible
+  date. Before that the button is disabled and says from when.
+- The owner can add a one-way note to the vet, up to 300 characters. The vet sees it
+  in F-10 and cannot reply to it.
+
+**Why.** The IA gives a next eligible date but not whether it limits requests. A week
+ahead means an owner of a diabetic or epileptic pet never runs out while waiting for
+approval, without stockpiling. The note lets the vet learn what changed, without the
+owner-to-vet chat D-006 rules out.
+
+**Not decided here.** Where the next eligible date comes from, the 7 days and whether
+the note is acceptable are Q-021.
+
+**Source.** `prototype/rules/f-08-f-09-prescriptions.md`, prototype design session for
+F-08 and F-09, 8 October 2026, decided by Antonija (design). To confirm with Petra at
+the next review.
+
+**Supersedes.** None.
