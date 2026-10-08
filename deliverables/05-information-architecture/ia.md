@@ -6,7 +6,7 @@ owner: designer
 updated: 2026-10-08
 depends_on: [01-project-alignment, 03-user-personas]
 feeds: [06-feature-prioritization, 07-technical-solution-proposal, 10-development-ready-prototype]
-decisions: [D-002, D-004, D-005, D-006, D-009, D-010, D-011, D-012]
+decisions: [D-002, D-004, D-005, D-006, D-009, D-010, D-011, D-012, D-014, D-015, D-016, D-017, D-018, D-019, D-020, D-021]
 figma: https://www.figma.com/file/EXERCISE/lumen-ia-board
 figma_checked: 2026-10-01
 ---
@@ -21,34 +21,56 @@ reception web view (D-010).
 In review after the IA workshop on 8 October. Lumen confirmed the five-area version
 on 2 October. The workshop moved repeat prescriptions under the pet (D-009), cut the
 app to four areas (D-010) and brought reception messaging into the first version
-(D-011, D-012). Where messages sit is open (Q-004), and Luka takes the structure
-back to Lumen the week of 12 October. The Figma board still shows five areas.
+(D-011, D-012). Lumen then placed messages on Home (D-018), which drops the inbox
+under Account. The Figma board still shows five areas and the Account inbox.
+
+Open and touching this structure: where reception sends messages from on the web
+view (Q-008), and how a request pending for 24 hours fits VetDesk confirming by
+itself after 15 minutes (Q-009).
 
 ## Owner app
 
+Croatian only at launch (D-016). Every screen leaves room for the longer Slovenian
+strings that follow in the next release (D-017).
+
 ### Home
 
-The next appointment, anything due (vaccination, check-up, prescription renewal),
-and one action per card. Pulls from Appointments and My pets. No content of its own.
+The next appointment, anything due, reception messages, and one action per card.
+Due items pull from Appointments and My pets. Messages are the only content Home
+holds of its own (D-018).
 
-A repeat prescription due for renewal shows as a card, for example "Rex's insulin is
-due for renewal". One tap opens the request inside the pet's record (D-009).
+- Due items are the reminders VetDesk returns as due for each pet: type, due date
+  and clinic. The app calculates none itself (D-014).
+- A repeat prescription due for renewal shows as a card, for example "Rex's insulin
+  is due for renewal". One tap opens the request inside the pet's record (D-009).
+- **From your clinic.** Reception messages, newest first. A message about a pet or
+  an appointment links to it. A push notification opens the message directly. No
+  reply (D-012, D-018).
 
 ### Appointments
 
 - Upcoming and past.
 - Book: pick the pet, the clinic (defaults to usual), the vet (defaults to usual,
   D-002), the appointment type from the clinic's list, then a slot.
-- Move or cancel an upcoming appointment. Cancellation inside 24 hours shows the
-  clinic's policy text.
-- Status: requested, confirmed, declined with reason (D-005).
+- Move or cancel a confirmed upcoming appointment. Cancellation inside 24 hours
+  shows the clinic's policy text.
+- Status per booking (D-005):
+  - **Requested.** The card reads "Requested, waiting for the clinic", with date,
+    time and pet. The owner can cancel the request but not change it (D-019).
+  - **Still requested after 24 hours.** It stays pending and the card adds "The
+    clinic will call you". Never cancelled automatically (D-021, open against
+    VetDesk's 15 minutes in Q-009).
+  - **Not confirmed.** Push notification. The card shows "Not confirmed" with the
+    reason reception picked, and "Pick another time" opens booking at the same
+    clinic with the same pet selected (D-020).
+  - **Confirmed.**
 
 ### My pets
 
 - One card per pet: name, species, breed, date of birth, usual clinic, usual vet.
 - The record: consultations in reverse order, each with date, vet, notes as released
   by the vet, and documents.
-- Vaccinations and due dates, read from VetDesk (D-006).
+- Vaccinations and due dates, as VetDesk returns them (D-006, D-014).
 - Repeat prescriptions, inside the pet's record (D-009).
   - Active repeat prescriptions: medicine, dose, last dispensed, next eligible date.
   - Request a renewal. Confirmation shows what the vet will see (D-004).
@@ -60,8 +82,9 @@ due for renewal". One tap opens the request inside the pet's record (D-009).
 
 ### Account
 
-Owner details, notification preferences (push, email, D-006), language (Q-003),
-sign out. An inbox for reception messages is proposed here, pending Q-004.
+Owner details, notification preferences (push, email, D-006), sign out. No language
+setting at launch, because there is one language (D-016); it comes with Slovenian.
+No reminder settings: reminder rules are managed only in VetDesk (D-015).
 
 ## Reception web view
 
@@ -75,10 +98,11 @@ file).
 ### Reception messages
 
 Reception sends one-way messages to an owner, from a short list of templates plus a
-free text field. The owner gets a push notification and sees the message in the app
-(D-011). The owner cannot reply in the app (D-012). Proposed placement: a third list,
-Messages, on this page, and an inbox under Account in the app. Open, Q-004.
+free text field. The owner gets a push notification and sees the message on Home
+(D-011, D-018). The owner cannot reply in the app (D-012). Where reception sends from
+on this page, a third Messages list or elsewhere, is open (Q-008).
 
 ## Out of the structure
 
 Payments, owner-to-vet chat (D-006). Owner replies to reception messages (D-012).
+An inbox under Account (D-018). Editing reminder rules (D-015).
