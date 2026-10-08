@@ -1,12 +1,13 @@
 ---
 deliverable: 05-information-architecture
 project_number: 3
-status: in-review
+status: confirmed
 owner: designer
 updated: 2026-10-08
+confirmed_with_client: 2026-10-15
 depends_on: [01-project-alignment, 03-user-personas]
 feeds: [06-feature-prioritization, 07-technical-solution-proposal, 10-development-ready-prototype]
-decisions: [D-002, D-004, D-005, D-006, D-009, D-010, D-011, D-012, D-014, D-015, D-016, D-017, D-018, D-019, D-020, D-021]
+decisions: [D-002, D-004, D-005, D-006, D-009, D-010, D-011, D-012, D-014, D-015, D-016, D-017, D-018, D-019, D-020, D-022, D-023, D-024, D-025, D-026]
 figma: https://www.figma.com/file/EXERCISE/lumen-ia-board
 figma_checked: 2026-10-01
 ---
@@ -18,15 +19,12 @@ Fictional client, created for an internal DECODE exercise.
 The written mirror of the IA board. Four top-level areas in the owner app and one
 reception web view (D-010).
 
-In review after the IA workshop on 8 October. Lumen confirmed the five-area version
-on 2 October. The workshop moved repeat prescriptions under the pet (D-009), cut the
-app to four areas (D-010) and brought reception messaging into the first version
-(D-011, D-012). Lumen then placed messages on Home (D-018), which drops the inbox
-under Account. The Figma board still shows five areas and the Account inbox.
-
-Open and touching this structure: where reception sends messages from on the web
-view (Q-008), and how a request pending for 24 hours fits VetDesk confirming by
-itself after 15 minutes (Q-009).
+Confirmed with Lumen on 15 October (D-026). Marta: "Yes. Confirmed. Start the
+prototype." Petra confirmed from her side. Lumen had confirmed a five-area version on
+2 October. The IA workshop on 8 October moved repeat prescriptions under the pet
+(D-009), cut the app to four areas (D-010) and brought reception messaging into the
+first version (D-011, D-012). Lumen then placed messages on Home (D-018) and gave
+reception a third list to send them from (D-025).
 
 ## Owner app
 
@@ -54,16 +52,17 @@ holds of its own (D-018).
   D-002), the appointment type from the clinic's list, then a slot.
 - Move or cancel a confirmed upcoming appointment. Cancellation inside 24 hours
   shows the clinic's policy text.
-- Status per booking (D-005):
+- Status per booking (D-005, confirmed by Lumen in D-023):
   - **Requested.** The card reads "Requested, waiting for the clinic", with date,
     time and pet. The owner can cancel the request but not change it (D-019).
-  - **Still requested after 24 hours.** It stays pending and the card adds "The
-    clinic will call you". Never cancelled automatically (D-021, open against
-    VetDesk's 15 minutes in Q-009).
-  - **Not confirmed.** Push notification. The card shows "Not confirmed" with the
-    reason reception picked, and "Pick another time" opens booking at the same
-    clinic with the same pet selected (D-020).
-  - **Confirmed.**
+    Reception has 15 minutes to reject it (D-024).
+  - **Not confirmed.** Reception rejected it within the 15 minutes. Push
+    notification. The card shows "Not confirmed" with the reason reception picked,
+    and "Pick another time" opens booking at the same clinic with the same pet
+    selected (D-020).
+  - **Confirmed.** After 15 minutes without a rejection, VetDesk confirms the
+    booking, and the owner sees it as confirmed (D-024). There is no 24-hour
+    pending state.
 
 ### My pets
 
@@ -83,13 +82,15 @@ holds of its own (D-018).
 ### Account
 
 Owner details, notification preferences (push, email, D-006), sign out. No language
-setting at launch, because there is one language (D-016); it comes with Slovenian.
+setting at launch. It goes here when Slovenian comes (D-016, D-022).
 No reminder settings: reminder rules are managed only in VetDesk (D-015).
 
 ## Reception web view
 
-Two lists, Appointment requests and Prescription requests (D-010), filtered to the
-clinic the receptionist is signed in to. Each row opens a detail with approve and reject.
+Three lists, Appointment requests, Prescription requests and Messages (D-010, D-025),
+filtered to the clinic the receptionist is signed in to. Each request opens a detail
+with approve and reject. An appointment request can be rejected for 15 minutes, after
+which VetDesk confirms it (D-024).
 Reject requires a reason from a short list plus free text (D-005). Prescription
 approvals are for vets; reception sees the queue and can reject on behalf of a vet
 only for administrative reasons (owner not registered at this clinic, pet not on
@@ -99,8 +100,8 @@ file).
 
 Reception sends one-way messages to an owner, from a short list of templates plus a
 free text field. The owner gets a push notification and sees the message on Home
-(D-011, D-018). The owner cannot reply in the app (D-012). Where reception sends from
-on this page, a third Messages list or elsewhere, is open (Q-008).
+(D-011, D-018). The owner cannot reply in the app (D-012). Reception sends from the
+Messages list, which also shows what it has sent (D-025).
 
 ## Out of the structure
 
