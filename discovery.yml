@@ -4,7 +4,7 @@ counts:
   deliverables: 7
   confirmed: 5
   stale: 0
-  superseded_citations: 0
+  superseded_citations: 1
   calls: 4
   material_raw: 4
 deliverables:
@@ -206,7 +206,10 @@ deliverables:
   - D-034
   - D-035
   - D-036
-  superseded_citations: []
+  - D-037
+  superseded_citations:
+  - cites: D-034
+    replaced_by: D-037
   reviewed: []
   stale_upstream: []
 prototype:
