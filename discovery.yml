@@ -218,8 +218,8 @@ prototype:
     - data-shape
     - interaction
     - breakpoints
-    changed: null
-    reconciled: null
+    changed: '2026-10-08'
+    reconciled: '2026-10-08'
 material:
 - path: client/2026-09-14-initial-request/README.md
   topic: initial-request
