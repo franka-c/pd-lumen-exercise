@@ -17,5 +17,6 @@ Every question has an owner and names what it blocks. Closed questions move to
 | Q-010 | What reasons can reception pick when it rejects an appointment request, a move or a cancellation (D-005, D-028)? The prototype uses placeholders. | Marta | 10 | 2026-10-08 | open, raised by F-05, widened by F-06 |
 | Q-011 | Does Lumen accept the Croatian wording in the prototype? Lumen agreed the booking strings in English (D-019, D-020). | Marta | 10 | 2026-10-08 | open, raised by F-05 |
 | Q-012 | Which colour is the main button: Coral, which the brand keeps for calls to action but fails contrast with white text (about 3:1), or Teal? | Luka | 10 | 2026-10-08 | open, the prototype uses Teal |
-| Q-013 | Can VetDesk hold the old slot while a move is pending, and does a pending cancellation complete by itself after 15 minutes? D-028 depends on both. | Iva | 07, 10 | 2026-10-08 | open, raised by F-06 |
+| Q-013 | Can VetDesk hold the old slot while a move is pending, does a pending cancellation complete by itself after 15 minutes, and can our backend confirm a pending write early? D-028 and D-029 depend on these. | Iva | 07, 10 | 2026-10-08 | open, raised by F-06, widened by F-10 |
 | Q-014 | What does Lumen's cancellation policy say? The prototype shows a placeholder when cancelling within 24 hours. | Marta | 10 | 2026-10-08 | open, raised by F-06 |
+| Q-015 | How do reception and vets sign in to the reception web view, and who creates their accounts? D-029 gives each their own sign-in. | Iva | 07, 10 | 2026-10-08 | open, raised by F-10 |

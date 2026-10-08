@@ -416,3 +416,31 @@ Q-014.
 8 October 2026, decided by Antonija (design). To confirm with Marta at the next review.
 
 **Supersedes.** None.
+
+## D-029
+
+**Decision.** F-10, the reception web view, behaves as follows:
+
+- Reception and vets use the same web view, each with their own sign-in. Vets see
+  only prescription requests.
+- "Odobri" on an appointment request, move or cancellation confirms it at once, and
+  the owner gets a push notification.
+- A request reception does not answer within 15 minutes is confirmed by VetDesk and
+  stays in the list, grey, marked "Potvrđeno automatski", until reception removes it.
+- The vet sets the pickup date when approving a repeat prescription. The default is
+  today, and it cannot be in the past.
+
+**Why.** The IA gives each request approve and reject, and D-004 has a vet approve
+every prescription, but neither says how the vet reaches it, what approve means when
+VetDesk confirms by itself after 15 minutes, or who sets the pickup date the owner
+sees. Own sign-ins show who approved a medicine. Approving at once spares the owner a
+wait for a decision already made.
+
+**Not decided here.** Whether our backend can confirm a pending VetDesk write early is
+part of Q-013. Sign-in and accounts are Q-015.
+
+**Source.** `prototype/rules/f-10-reception.md`, prototype design session for F-10,
+8 October 2026, decided by Antonija (design). To confirm with Marta and Petra at the
+next review.
+
+**Supersedes.** None.

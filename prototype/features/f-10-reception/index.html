@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lumen recepcija</title>
+  <link rel="stylesheet" href="../../tokens.css?v=0.3.0">
+  <link rel="stylesheet" href="../../shared.css?v=0.3.0">
+</head>
+<body>
+  <!-- F-10 Reception web view: appointment and prescription requests.
+       Rules, decisions and open items: prototype/rules/f-10-reception.md -->
+  <div id="app"></div>
+  <div id="overlays"></div>
+  <div class="proto-panel" id="proto-panel"></div>
+
+  <details class="devdoc" id="devdoc">
+    <summary>[Prototip] Za developere: ugovor podataka, pravila, tekstovi (EN)</summary>
+
+    <p>Rules page: <code>prototype/rules/f-10-reception.md</code>. <code>?role=reception|vet</code>, <code>?state=&lt;id&gt;</code>, <code>?long=1</code>, <code>?text=200</code>. Mock "now" is Tue 20 Oct 2026, 10:00. The panel moves time forward 5 minutes at a time.</p>
+
+    <h3>appointment_request</h3>
+    <table>
+      <tr><th>Field</th><th>Type</th><th>Required</th><th>Nullable</th><th>Values, format</th><th>Source</th></tr>
+      <tr><td>id</td><td>string</td><td>yes</td><td>no</td><td></td><td></td></tr>
+      <tr><td>kind</td><td>enum</td><td>yes</td><td>no</td><td><code>new</code>, <code>move</code>, <code>cancel</code></td><td>D-024, D-028</td></tr>
+      <tr><td>pet, owner, vet_id, type</td><td>string, enum</td><td>yes</td><td>no</td><td>as F-05</td><td>F-05</td></tr>
+      <tr><td>slot_start</td><td>datetime</td><td>yes</td><td>no</td><td>the booked time; for a move, the current time</td><td>F-05</td></tr>
+      <tr><td>new_slot_start</td><td>datetime</td><td>when move</td><td>no</td><td>the requested time</td><td>D-028</td></tr>
+      <tr><td>requested_at</td><td>datetime</td><td>yes</td><td>no</td><td>reception can act until requested_at + 15 min; then VetDesk confirms and the row shows "Potvrđeno automatski"</td><td>D-024, D-029</td></tr>
+      <tr><td>dismissed</td><td>boolean</td><td>yes</td><td>no</td><td>auto-confirmed row removed from the list by reception. Per user or per clinic: <span class="unconf">unconfirmed</span></td><td>D-029</td></tr>
+    </table>
+
+    <h3>prescription_request</h3>
+    <table>
+      <tr><th>Field</th><th>Type</th><th>Required</th><th>Nullable</th><th>Values, format</th><th>Source</th></tr>
+      <tr><td>pet, species, owner</td><td>string</td><td>yes</td><td>no</td><td></td><td></td></tr>
+      <tr><td>medicine, dose</td><td>string</td><td>yes</td><td>no</td><td>as VetDesk holds them</td><td>D-013 (read only)</td></tr>
+      <tr><td>last_consultation</td><td>{date, vet_id, note}</td><td>yes</td><td>yes</td><td>null: "Nema pregleda u kartoteci"</td><td>D-004</td></tr>
+      <tr><td>last_dispensed</td><td>date</td><td>yes</td><td>yes</td><td>null: "Nije izdavan"</td><td>D-004</td></tr>
+      <tr><td>pickup_from</td><td>date</td><td>on approve</td><td>no</td><td>set by the vet, default today, not in the past</td><td>D-029</td></tr>
+      <tr><td>registered_here</td><td>boolean</td><td>yes</td><td>no</td><td>false shows "Provjeriti vlasnika" in the list</td><td>IA, administrative check</td></tr>
+    </table>
+
+    <h3>Reasons</h3>
+    <ul>
+      <li class="unconf">Appointment: vet_unavailable, call_first, other. Cancellation: late_cancellation, other. Vet, prescription: needs_checkup, other. All UNCONFIRMED placeholders (Q-010).</li>
+      <li>Reception, prescription, administrative only: owner_not_registered, pet_not_on_file. From the IA.</li>
+    </ul>
+
+    <h3>Interaction rules</h3>
+    <ul>
+      <li>Two roles, each with its own sign-in (D-029). Reception: Zahtjevi za termine, Zahtjevi za recepte, Poruke. Vet: Zahtjevi za recepte only.</li>
+      <li>Each tab shows its count of active requests; the browser tab title shows the total, for example "(4) Lumen recepcija". No sound.</li>
+      <li>Appointment requests: one list, the one expiring first on top. Each row: kind, pet and type, owner, time (a move shows old → new), vet, minutes left.</li>
+      <li>A row opens the detail in a panel on the right; below 1024 px it opens over the list.</li>
+      <li>"Odobri" confirms at once and the owner gets a push (D-029). "Odbij" needs a reason; free text is optional; not undoable; the owner gets a push.</li>
+      <li>After 15 minutes the row turns grey, "Potvrđeno automatski", with "Ukloni s liste". "Ukloni sve automatski potvrđene" clears them all.</li>
+      <li>If VetDesk confirmed while reception was deciding, sending shows "Ovaj zahtjev je već obrađen" and the buttons disable.</li>
+      <li>Prescriptions, vet: "Preuzimanje od" (default today, not in the past), then Odobri, or Odbij with a reason.</li>
+      <li>Prescriptions, reception: no Odobri; only "Odbij (administrativno)" with the two IA reasons.</li>
+    </ul>
+
+    <h3>Open</h3>
+    <ul>
+      <li class="unconf">Q-013: can our backend confirm a pending VetDesk write early ("Odobri")?</li>
+      <li class="unconf">Q-015: sign-in and accounts for reception and vets.</li>
+      <li class="unconf">Q-010: all reasons except the two administrative ones.</li>
+    </ul>
+  </details>
+
+  <script src="data.js?v=0.3.0"></script>
+  <script src="reception.js?v=0.3.0"></script>
+</body>
+</html>
