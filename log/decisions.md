@@ -493,3 +493,21 @@ October 2026, decided by Antonija (design). To confirm with Marta and Petra at t
 next review.
 
 **Supersedes.** None.
+
+## D-032
+
+**Decision.** In F-03, the pet's record, the owner sees only the consultation notes and
+documents the vet marked as visible to the owner. A consultation with nothing marked
+shows its date, type and vet, and says the notes are not available in the app.
+
+**Why.** The IA says "notes as released by the vet". Applying the same marker to
+documents means an owner never reads a lab result before the vet can explain it.
+Reception announces results with a message (F-13).
+
+**Not decided here.** Whether VetDesk has such a marker and returns it is Q-018.
+
+**Source.** `prototype/rules/f-03-record.md`, prototype design session for F-03, 8
+October 2026, decided by Antonija (design). To confirm with Marta and Petra at the
+next review.
+
+**Supersedes.** None.

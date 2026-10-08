@@ -4,6 +4,7 @@ Versioned, newest first. Tagged at each client review session.
 
 | Date | Version | Feature | What changed | Decision |
 | --- | --- | --- | --- | --- |
+| 2026-10-08 | 0.6.0 | F-03 | First version. The record by year, 20 at a time, consultations with the notes and documents the vet released, an in-app document viewer. F-02's "Karton" opens it | D-032 |
 | 2026-10-08 | 0.5.0 | F-02 | First version. Pets list and the pet's page from VetDesk, owner photos, a "Preminuli" section with the record read only. Definition values now wrap in every feature | D-031 |
 | 2026-10-08 | 0.4.0 | F-01 | First version. Activation from the clinic invitation, sign-in with email or phone and password, password recovery by link or SMS code, invitation request with the same reply for everyone, Account with sign-out. The bottom navigation appears for the first time. Links use the primary colour | D-030 |
 | 2026-10-08 | 0.3.0 | F-10 | First version. Reception web view for desktop: appointment requests (new, move, cancel) with minutes left, approve at once or reject with a reason, auto-confirmed rows kept until removed. Prescription requests: the vet approves with a pickup date, reception rejects only for administrative reasons | D-029 |
