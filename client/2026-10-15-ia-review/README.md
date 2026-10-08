@@ -4,7 +4,7 @@ topic: ia-review
 added_by: franka
 added: 2026-10-08
 source: IA review call with Lumen, 15 October 2026, with Marta, Petra and Tomislav. Excerpts only, quoted from the candidate table drafted from the transcript
-status: raw
+status: worked-in
 feeds: [05-information-architecture, 07-technical-solution-proposal, 10-development-ready-prototype]
 ---
 
@@ -18,5 +18,4 @@ Petra confirmed from her side. The call file is `log/calls/2026-10-15-ia-review.
 `excerpts.md` holds the quoted lines only. The full transcript was not available
 when this was filed. Add it here when it is.
 
-It stays `raw` until 05 reflects it and is set to confirmed. Flip it to `worked-in`
-in that pull request.
+Worked into 05 in the pull request that set it to confirmed.
